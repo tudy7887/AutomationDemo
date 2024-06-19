@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest{
     @Test
     public void CheckErrorMessage(){
         InuitTest("Login");
-        loginActions.SetMail("jgjhgjgjh");
+        loginActions.SetMail("jgjhkhkjhkgjgjh");
         loginActions.SetPassword("jkkjgdjfefeg");
         loginActions.ClickLogin();
         Assert.assertEquals(loginActions.GetErrorMessage(), expectedError, "Error: Wrong Error Message!");
