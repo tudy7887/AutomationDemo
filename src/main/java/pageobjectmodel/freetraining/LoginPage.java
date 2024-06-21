@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+// user: tudor.niculae@email.com
+// parola: tudor7887
+
 public class LoginPage {
     private WebDriver driver;
     private By Mail = By.id("userEmail");
@@ -14,6 +17,7 @@ public class LoginPage {
     private By Login = By.id("submitButton");
     private By Error = By.id("errorForbiddenAccess");
     private By App = By.cssSelector("body > app-root > app-login");
+    private String Link = "http://apptest.go.ro:9999/login";
 
 
     public LoginPage(WebDriver driver){
@@ -21,6 +25,7 @@ public class LoginPage {
     }
 
 
+    public String GetPageLink(){return Link;}
     public void SetMail(String text){
         driver.findElement(Mail).sendKeys(text);
     }

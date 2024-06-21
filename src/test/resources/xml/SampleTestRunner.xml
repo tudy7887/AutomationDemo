@@ -5,10 +5,4 @@
             <class name="testng.LoginTest"/>
         </classes>
     </test>
-
-    <test name="SimpleTest">
-        <classes>
-            <class name="testng.LoginTest"/>
-        </classes>
-    </test>
 </suite>

@@ -14,12 +14,14 @@ public class LoginElements {
     private By Password = By.id("userPassword");
     private By Login = By.id("submitButton");
     private By Error = By.id("errorForbiddenAccess");
+    private String Link = "http://apptest.go.ro:9999/login";
 
 
     public LoginElements(WebDriver driver){
         this.driver = driver;
     }
 
+    public String GetPageLink(){return Link;}
     public WebElement MailInput(){
         return driver.findElement(Mail);
     }

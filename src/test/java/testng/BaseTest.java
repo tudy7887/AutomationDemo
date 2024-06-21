@@ -30,6 +30,7 @@ public class BaseTest {
 
     @AfterSuite
     public void Teardown(){
+        ReportManager.GenerateReport();
         if(driver != null){
             driver.quit();
         }
