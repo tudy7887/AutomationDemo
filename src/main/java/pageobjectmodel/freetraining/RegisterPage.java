@@ -64,6 +64,6 @@ public class RegisterPage {
     public void WaitUntilLoaded()
     {
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> d.findElement(App).isEnabled());
+        wait.until(d -> d.getCurrentUrl() == GetPageLink());
     }
 }

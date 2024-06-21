@@ -1,8 +1,12 @@
 package template.actions;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import template.elements.CustomerDashBoardElements;
 import template.elements.LoginElements;
+
+import java.time.Duration;
 
 public class CustomerDashBoardActions {
     private WebDriver driver;
@@ -122,5 +126,10 @@ public class CustomerDashBoardActions {
         } catch (Exception e) {
             return false;
         }
+    }
+    public void WaitUntilLoaded()
+    {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> d.getCurrentUrl() == elements.GetPageLink());
     }
 }

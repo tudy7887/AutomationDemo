@@ -41,7 +41,7 @@ public class CustomerDashBoardElements {
         this.driver = driver;
     }
 
-    public String GetLoginLink(){return Link;}
+    public String GetPageLink(){return Link;}
 
     public WebElement CalendarDay(int week, int day)
     {
@@ -116,7 +116,7 @@ public class CustomerDashBoardElements {
         return driver.findElement(Wednesday);
     }
     public WebElement ThursdayColumn(){
-        return driver.findElement(Tuesday);
+        return driver.findElement(Thursday);
     }
     public WebElement FridayColumn(){
         return driver.findElement(Friday);
