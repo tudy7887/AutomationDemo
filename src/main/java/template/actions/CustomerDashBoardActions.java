@@ -29,6 +29,9 @@ public class CustomerDashBoardActions {
     public void ClickEmail(){
         elements.EmailButton().click();
     }
+    public String GetEmail(){
+        return elements.EmailButton().getText();
+    }
     public void ClickPrevious(){
         elements.PreviousButton().click();
     }

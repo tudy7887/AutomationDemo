@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import template.actions.CustomerDashBoardActions;
+import template.actions.LoginActions;
 import util.ReportManager;
 import util.ScreenShotManager;
 import webdriver.Chrome;
@@ -20,6 +22,10 @@ public class BaseTest {
     protected WebDriver driver;
     private ExtentTest extentTest;
     private ScreenShotManager screenShotManager;
+    protected LoginActions loginActions;
+    protected CustomerDashBoardActions customerDashBoardActions;
+    protected String email = "tudor.niculae@email.com";
+    protected String password = "tudor7887";
 
     @BeforeSuite
     public void Setup(){
@@ -70,6 +76,20 @@ public class BaseTest {
 
         // Capture + Save
         screenShotManager.CaptureAndSaveScreenShot(name);
+    }
+
+    protected void Login()
+    {
+        loginActions.SetMail(email);
+        loginActions.SetPassword(password);
+        loginActions.ClickLogin();
+        customerDashBoardActions.WaitUntilLoaded();
+    }
+
+    protected void Logout()
+    {
+        customerDashBoardActions.ClickLogout();
+        loginActions.WaitUntilLoaded();
     }
 
 }
