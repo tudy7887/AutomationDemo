@@ -1,14 +1,10 @@
-package template.elements;
+package fetraining.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class CustomerDashBoardElements {
+public class CustomerDashBoardElements extends  BaseElements {
     private WebDriver driver;
     private By Logout = By.cssSelector("body > app-root > app-header > header > nav > ul > li:nth-child(6) > a");
     private By Training = By.cssSelector("body > app-root > app-header > header > nav > ul > li:nth-child(4) > a");
@@ -23,7 +19,7 @@ public class CustomerDashBoardElements {
     private By List = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[3]/div/button[4]");
     private By TogleCalendar = By.xpath("/html/body/app-root/app-dashboard/div/div[1]/div[2]/label/input");
     private By TogleWeekends = By.xpath("/html/body/app-root/app-dashboard/div/div[1]/div[3]/label/input");
-    private By MonthYear = By.id("fc-dom-189");
+    private By MonthYear = By.id("fc-dom-1");
     private By Calendar = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[2]");
     private By AddEvent = By.cssSelector("#createEvent > div > div");
     private By EventTtle = By.id("eventTitle");
@@ -36,12 +32,10 @@ public class CustomerDashBoardElements {
     private By Friday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
     private By Saturday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
     private By Sunday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sun");
-    private String Link = "http://apptest.go.ro:9999/dashboard";
     public CustomerDashBoardElements(WebDriver driver){
         this.driver = driver;
+        SetLink("http://apptest.go.ro:9999/dashboard");
     }
-
-    public String GetPageLink(){return Link;}
 
     public WebElement CalendarDay(int week, int day)
     {

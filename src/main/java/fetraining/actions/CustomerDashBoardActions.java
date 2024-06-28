@@ -1,20 +1,21 @@
-package template.actions;
+package fetraining.actions;
 
+import fetraining.elements.LoginElements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import template.elements.CustomerDashBoardElements;
-import template.elements.LoginElements;
+import fetraining.elements.CustomerDashBoardElements;
 
 import java.time.Duration;
 
-public class CustomerDashBoardActions {
+public class CustomerDashBoardActions extends BaseActions {
     private WebDriver driver;
     private CustomerDashBoardElements elements;
 
     public CustomerDashBoardActions(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         elements = new CustomerDashBoardElements(driver);
+        SetBaseElements(elements);
     }
 
     public void ClickLogout(){
@@ -70,6 +71,9 @@ public class CustomerDashBoardActions {
     }
     public void InsertTextToEventTitle(String input){
         elements.EventTitleInput().sendKeys(input);
+    }
+    public void ClearEventTitle(){
+        elements.EventTitleInput().clear();
     }
     public String GetMonthDayText(){
         return  elements.MonthYearTextBox().getText();
@@ -129,10 +133,5 @@ public class CustomerDashBoardActions {
         } catch (Exception e) {
             return false;
         }
-    }
-    public void WaitUntilLoaded()
-    {
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> d.getCurrentUrl() == elements.GetPageLink());
     }
 }
