@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Customer Dash Board Test Suite">
+    <test name="Customer Dash Board">
+        <groups>
+            <run>
+                <exclude name="loginfailmessages"/>
+                <include name="calendarnavigationbutton"/>
+                <include name="authentication"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="testng.CustomerDashBoardTest"/>
+            <class name="testng.LoginTest"/>
+        </classes>
+    </test>
+</suite>

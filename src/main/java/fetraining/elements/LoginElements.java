@@ -1,4 +1,4 @@
-package template.elements;
+package fetraining.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,16 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginElements {
+public class LoginElements extends BaseElements {
     private WebDriver driver;
     private By Mail = By.id("userEmail");
     private By Password = By.id("userPassword");
     private By Login = By.id("submitButton");
     private By Error = By.id("errorForbiddenAccess");
 
-
     public LoginElements(WebDriver driver){
         this.driver = driver;
+        SetLink("http://apptest.go.ro:9999/login");
     }
 
     public WebElement MailInput(){

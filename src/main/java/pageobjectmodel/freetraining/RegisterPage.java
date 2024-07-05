@@ -20,6 +20,7 @@ public class RegisterPage {
     private By SignUp = By.id("submit");
     private By Error = By.cssSelector("body > div > div > form > div.customerAlreadyRegistered");
     private By App = By.cssSelector("body > app-root > app-register");
+    private String Link = "http://apptest.go.ro:9999/register";
 
 
     public RegisterPage(WebDriver driver){
@@ -27,6 +28,7 @@ public class RegisterPage {
     }
 
 
+    public String GetPageLink(){return Link;}
     public void SetFirstName(String text){
         driver.findElement(FirstName).sendKeys(text);
     }
@@ -62,6 +64,6 @@ public class RegisterPage {
     public void WaitUntilLoaded()
     {
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> d.findElement(App).isEnabled());
+        wait.until(d -> d.getCurrentUrl() == GetPageLink());
     }
 }
