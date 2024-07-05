@@ -5,12 +5,14 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import net.thucydides.core.reports.ExtendedReport;
 
+import java.io.File;
+
 public class ReportManager {
     private static ExtentReports reports;
 
-    public static ExtentReports Report()
+    public static ExtentReports Report(String reportName)
     {
-        var pathLocation = "TestReport.html";
+        var pathLocation = new File("Results" , reportName).getPath();
         if(reports == null){
             ExtentSparkReporter sparkReporter = new ExtentSparkReporter(pathLocation);
             reports = new ExtentReports();
@@ -20,8 +22,8 @@ public class ReportManager {
         return reports;
     }
 
-    public static ExtentTest createTest(String testName){
-        return Report().createTest(testName);
+    public static ExtentTest createTest(String reportName, String testName){
+        return Report(reportName).createTest(testName);
     }
 
     public static void GenerateReport(){

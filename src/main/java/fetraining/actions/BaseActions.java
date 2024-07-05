@@ -25,4 +25,9 @@ public class BaseActions {
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(d -> d.getCurrentUrl().contains(baseElements.GetLink()));
     }
+
+    public void GotoPage()
+    {
+        driver.get(baseElements.GetLink());
+    }
 }
