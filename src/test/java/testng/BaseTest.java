@@ -28,7 +28,6 @@ public class BaseTest {
     protected String url;
 
     private String propertyFilePath = "D:\\Learning\\SelfLearning\\Training\\src\\test\\resources\\properties\\FeTraining.properties";
-    private String goodUser, goodPassword;
     private String pased, failed, skipped;
 
     @BeforeSuite
@@ -84,29 +83,7 @@ public class BaseTest {
         screenShotManager.CaptureAndSaveScreenShot(name);
     }
 
-    protected void Login()
-    {
-        loginActions.SetMail(goodUser);
-        loginActions.SetPassword(goodPassword);
-        loginActions.ClickLogin();
-        customerDashBoardActions.WaitUntilLoaded();
-    }
-
-    protected void Logout()
-    {
-        customerDashBoardActions.ClickLogout();
-        loginActions.WaitUntilLoaded();
-    }
-
-    protected void ClearLoginInfo()
-    {
-        loginActions.ClearMail();
-        loginActions.ClearPassword();
-    }
-
     private void InitializeProperties(){
-        goodUser = configLoader.getProperties("GoodUser");
-        goodPassword = configLoader.getProperties("GoodPassword");
         url = configLoader.getProperties("StartPageLink");
         failed = configLoader.getProperties("TESTFAILED");
         pased = configLoader.getProperties("TESTPASSED");

@@ -5,7 +5,7 @@ import org.testng.annotations.*;
 import fetraining.actions.CustomerDashBoardActions;
 import fetraining.actions.LoginActions;
 
-public class CustomerDashBoardTest extends BaseTest{
+public class CustomerDashBoardTest extends LoginTest{
     private String currentMonthYear, nextMonthYear, previousMonthYear, fewMonthYearsAgo, errorCalendarDiplayed, errorCalendarNotDiplayed, errorWrongMonthYear;
 
     @BeforeSuite
@@ -15,16 +15,9 @@ public class CustomerDashBoardTest extends BaseTest{
         loginActions = new LoginActions(driver);
         customerDashBoardActions =  new CustomerDashBoardActions(driver);
         driver.get(url);
-        Login();
     }
 
-    @AfterSuite
-    public void Teardown(){
-        Logout();
-        super.Teardown();
-    }
-
-    @Test
+    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
     public void PreviousButton() {
         customerDashBoardActions.ClickToday();
         InuitTest("Previous");
@@ -32,7 +25,7 @@ public class CustomerDashBoardTest extends BaseTest{
         Assert.assertEquals(customerDashBoardActions.GetMonthDayText(), previousMonthYear, errorWrongMonthYear);
     }
 
-    @Test
+    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
     public void ForwardButton() {
         customerDashBoardActions.ClickToday();
         InuitTest("Forward");
@@ -40,7 +33,7 @@ public class CustomerDashBoardTest extends BaseTest{
         Assert.assertEquals(customerDashBoardActions.GetMonthDayText(), nextMonthYear, errorWrongMonthYear);
     }
 
-    @Test
+    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
     public void TodayButton() {
         customerDashBoardActions.ClickToday();
         InuitTest("Today");
@@ -52,7 +45,7 @@ public class CustomerDashBoardTest extends BaseTest{
         Assert.assertEquals(customerDashBoardActions.GetMonthDayText(), currentMonthYear, errorWrongMonthYear);
     }
 
-    @Test
+    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
     public void ToggleCalendarCheckBox(){
         InuitTest("ToggleCalendar");
         Assert.assertTrue(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarNotDiplayed);

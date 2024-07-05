@@ -11,7 +11,7 @@ import fetraining.actions.LoginActions;
 // parola: tudor7887
 
 public class LoginTest extends BaseTest{
-    private String badUser, badPassword, loginError, wrongErrorMessage, userEmail, loginFailed;
+    private String badUser, badPassword, loginError, wrongErrorMessage, userEmail, loginFailed, goodUser, goodPassword;;
 
     @BeforeSuite
     public void Setup(){
@@ -26,9 +26,9 @@ public class LoginTest extends BaseTest{
         driver.get(url);
     }
 
-    @Test
-    public void FailedLoginErrorMesage(){
-        InuitTest("Login Error");
+    @Test (groups = "loginfailmessages")
+    public void WrongCreditentialsMesage(){
+        InuitTest("Wrong Creditentials Message");
         loginActions.SetMail(badUser);
         loginActions.SetPassword(badPassword);
         loginActions.ClickLogin();
@@ -36,20 +36,38 @@ public class LoginTest extends BaseTest{
         ClearLoginInfo();
     }
 
-    @Test
-    public void SuccessfullLogin(){
-        InuitTest("Login Successful");
-        Login();
+    @Test (groups = "authentication", priority = 1)
+    public void LoginSuccessfull(){
+        InuitTest("Login Successfull");
+        loginActions.SetMail(goodUser);
+        loginActions.SetPassword(goodPassword);
+        loginActions.ClickLogin();
+        customerDashBoardActions.WaitUntilLoaded();
         Assert.assertEquals(customerDashBoardActions.GetEmail(), userEmail, loginFailed );
         Logout();
     }
 
+    @Test (groups = "authentication", priority = 2)
+    protected void Logout()
+    {
+        customerDashBoardActions.ClickLogout();
+        loginActions.WaitUntilLoaded();
+    }
+
+    protected void ClearLoginInfo()
+    {
+        loginActions.ClearMail();
+        loginActions.ClearPassword();
+    }
+
     private void InitializeProperties(){
-        badUser = configLoader.getProperties("BadUser");
-        badPassword = configLoader.getProperties("BadPassword");
+        badUser = configLoader.getProperties("InvalidUser");
+        badPassword = configLoader.getProperties("InvalidPassword");
         loginError = configLoader.getProperties("LoginError");
         wrongErrorMessage = configLoader.getProperties("WrongErrorMessage");
-        userEmail = configLoader.getProperties("GoodUser");
+        userEmail = configLoader.getProperties("customerUser");
         loginFailed = configLoader.getProperties("LoginFailed");
+        goodUser = configLoader.getProperties("customerUser");
+        goodPassword = configLoader.getProperties("CustomerPassword");
     }
 }
