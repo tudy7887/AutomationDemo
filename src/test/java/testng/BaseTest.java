@@ -22,24 +22,20 @@ public class BaseTest {
     protected WebDriver driver;
     private ExtentTest extentTest;
     private ScreenShotManager screenShotManager;
-    protected LoginActions loginActions;
-    protected CustomerDashBoardActions customerDashBoardActions;
     protected ConfigLoader configLoader;
-    protected String url;
 
-    private String propertyFilePath = "D:\\Learning\\SelfLearning\\Training\\src\\test\\resources\\properties\\FeTraining.properties";
+    private String baseTestPropertyFilePath = "D:\\Learning\\SelfLearning\\Training\\src\\test\\resources\\properties\\BaseTest.properties";
     private String pased, failed, skipped;
 
-    @BeforeSuite
+    @BeforeSuite (alwaysRun = true)
     public void Setup(){
-        configLoader = new ConfigLoader(propertyFilePath);
-        InitializeProperties();
         chrome = new Chrome();
         driver =  chrome.GetChromeDriver();
         screenShotManager = new ScreenShotManager(driver);
+        InitializeProperties();
     }
 
-    @AfterSuite
+    @AfterSuite (alwaysRun = true)
     public void Teardown(){
         ReportManager.GenerateReport();
         if(driver != null){
@@ -48,7 +44,7 @@ public class BaseTest {
     }
 
     public void InuitTest (String testName){
-        extentTest = ReportManager.createTest(testName);
+        extentTest = ReportManager.createTest(getReportName(), testName);
     }
 
     /**
@@ -72,19 +68,22 @@ public class BaseTest {
         }
     }
 
+    protected String getReportName() {
+        return "BaseTestReport.html";
+    }
+
     private void SaveFailueScreenShot(String name){
         // Create folder for screenshot
         File screenShotDirectory = new File("ScreenShots");
         if(!screenShotDirectory.exists()){
             screenShotDirectory.mkdir();
         }
-
         // Capture + Save
         screenShotManager.CaptureAndSaveScreenShot(name);
     }
 
     private void InitializeProperties(){
-        url = configLoader.getProperties("StartPageLink");
+        configLoader = new ConfigLoader(baseTestPropertyFilePath);
         failed = configLoader.getProperties("TESTFAILED");
         pased = configLoader.getProperties("TESTPASSED");
         skipped = configLoader.getProperties("TESTSKIPPED");

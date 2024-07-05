@@ -2,7 +2,7 @@
 <suite name="Login Test Suite">
     <test name="Login">
         <classes>
-            <class name="testng.LoginTest"/>
+            <class name="testng.fetraining.LoginTest"/>
         </classes>
     </test>
 </suite>

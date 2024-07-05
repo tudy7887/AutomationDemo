@@ -1,20 +1,16 @@
-package testng;
+package testng.fetraining;
 
+import fetraining.actions.CustomerDashBoardActions;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import fetraining.actions.CustomerDashBoardActions;
-import fetraining.actions.LoginActions;
 
-public class CustomerDashBoardTest extends LoginTest{
+public class CustomerDashBoardTest extends LoginTest {
     private String currentMonthYear, nextMonthYear, previousMonthYear, fewMonthYearsAgo, errorCalendarDiplayed, errorCalendarNotDiplayed, errorWrongMonthYear;
 
-    @BeforeSuite
+    @BeforeSuite (alwaysRun = true)
     public void Setup(){
         super.Setup();
         InitializeProperties();
-        loginActions = new LoginActions(driver);
-        customerDashBoardActions =  new CustomerDashBoardActions(driver);
-        driver.get(url);
     }
 
     @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")

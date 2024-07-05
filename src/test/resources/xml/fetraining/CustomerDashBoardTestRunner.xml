@@ -3,14 +3,10 @@
     <test name="Customer Dash Board">
         <groups>
             <run>
-                <exclude name="loginfailmessages"/>
-                <include name="calendarnavigationbutton"/>
-                <include name="authentication"/>
             </run>
         </groups>
         <classes>
-            <class name="testng.CustomerDashBoardTest"/>
-            <class name="testng.LoginTest"/>
+            <class name="testng.fetraining.CustomerDashBoardTest"/>
         </classes>
     </test>
 </suite>
