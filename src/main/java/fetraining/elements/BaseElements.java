@@ -1,13 +1,21 @@
 package fetraining.elements;
 
+import org.openqa.selenium.WebDriver;
+
 public class BaseElements {
-    private String Link;
+    private String link;
+    protected WebDriver driver;
+
+    BaseElements(WebDriver driver)
+    {
+        this.driver =  driver;
+    }
 
     public String GetLink(){
-        return Link;
+        return link;
     }
 
     protected void SetLink(String link) {
-        Link = link;
+        this.link = link;
     }
 }

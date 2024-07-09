@@ -11,11 +11,12 @@ public class ConfigLoader {
         try (FileInputStream inputStream = new FileInputStream(propertyFilePath)){
             properties.load(inputStream);
         }catch (IOException e){
+
             throw new RuntimeException("File not found at " + propertyFilePath);
         }
     }
 
-    public String getProperties(String key) {
+    public String GetProperties(String key) {
         return properties.getProperty(key);
     }
 }

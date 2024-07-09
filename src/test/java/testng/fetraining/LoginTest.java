@@ -46,7 +46,7 @@ public class LoginTest extends BaseTest {
         loginActions.SetPassword(goodPassword);
         loginActions.ClickLogin();
         customerDashBoardActions.WaitUntilLoaded();
-        Assert.assertEquals(customerDashBoardActions.GetEmail(), userEmail, loginFailed );
+        Assert.assertEquals(customerDashBoardActions.GetEmail(), userEmail, loginFailed);
     }
 
     @Test (groups = "authentication", priority = 1)
@@ -62,19 +62,19 @@ public class LoginTest extends BaseTest {
         loginActions.ClearPassword();
     }
 
-    @Override protected String getReportName() {
+    @Override protected String GetReportName() {
         return "FeTraining.html";
     }
 
     private void InitializeProperties(){
-        url = configLoader.getProperties("StartPageLink");
-        badUser = configLoader.getProperties("InvalidUser");
-        badPassword = configLoader.getProperties("InvalidPassword");
-        loginError = configLoader.getProperties("LoginError");
-        wrongErrorMessage = configLoader.getProperties("WrongErrorMessage");
-        userEmail = configLoader.getProperties("customerUser");
-        loginFailed = configLoader.getProperties("LoginFailed");
-        goodUser = configLoader.getProperties("customerUser");
-        goodPassword = configLoader.getProperties("CustomerPassword");
+        url = configLoader.GetProperties("StartPageLink");
+        badUser = configLoader.GetProperties("InvalidUser");
+        badPassword = configLoader.GetProperties("InvalidPassword");
+        loginError = configLoader.GetProperties("LoginError");
+        wrongErrorMessage = configLoader.GetProperties("WrongErrorMessage");
+        userEmail = configLoader.GetProperties("customerUser");
+        loginFailed = configLoader.GetProperties("LoginFailed");
+        goodUser = configLoader.GetProperties("customerUser");
+        goodPassword = configLoader.GetProperties("CustomerPassword");
     }
 }

@@ -1,7 +1,6 @@
 package fetraining.actions;
 
 import fetraining.elements.BaseElements;
-import fetraining.elements.CustomerDashBoardElements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,7 +9,7 @@ import java.time.Duration;
 
 public class BaseActions {
     private BaseElements baseElements;
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public BaseActions(WebDriver driver){
         this.driver = driver;

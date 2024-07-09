@@ -1,11 +1,10 @@
 package testng.fetraining;
 
-import fetraining.actions.CustomerDashBoardActions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class CustomerDashBoardTest extends LoginTest {
-    private String currentMonthYear, nextMonthYear, previousMonthYear, fewMonthYearsAgo, errorCalendarDiplayed, errorCalendarNotDiplayed, errorWrongMonthYear;
+    private String currentMonthYear, nextmonthyear, previousMonthYear, fewMonthYearsAgo, errorCalendarDiplayed, errorCalendarNotDiplayed, errorWrongMonthYear;
 
     @BeforeSuite (alwaysRun = true)
     public void Setup(){
@@ -26,7 +25,7 @@ public class CustomerDashBoardTest extends LoginTest {
         customerDashBoardActions.ClickToday();
         InuitTest("Forward");
         customerDashBoardActions.ClickForward();
-        Assert.assertEquals(customerDashBoardActions.GetMonthDayText(), nextMonthYear, errorWrongMonthYear);
+        Assert.assertEquals(customerDashBoardActions.GetMonthDayText(), nextmonthyear, errorWrongMonthYear);
     }
 
     @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
@@ -52,13 +51,13 @@ public class CustomerDashBoardTest extends LoginTest {
     }
 
     private void InitializeProperties(){
-        currentMonthYear = configLoader.getProperties("CurrentMonthYear");
-        nextMonthYear = configLoader.getProperties("NextMonthYear");
-        previousMonthYear = configLoader.getProperties("PreviousMonthYear");
-        fewMonthYearsAgo = configLoader.getProperties("FewMonthYearsAgo");
-        errorCalendarDiplayed = configLoader.getProperties("ErrorCalendarDiplayed");
-        errorCalendarNotDiplayed = configLoader.getProperties("ErrorCalendarNotDiplayed");
-        errorWrongMonthYear = configLoader.getProperties("ErrorWrongMonthYear");
+        currentMonthYear = configLoader.GetProperties("CurrentMonthYear");
+        nextmonthyear = configLoader.GetProperties("NextMonthYear");
+        previousMonthYear = configLoader.GetProperties("PreviousMonthYear");
+        fewMonthYearsAgo = configLoader.GetProperties("FewMonthYearsAgo");
+        errorCalendarDiplayed = configLoader.GetProperties("ErrorCalendarDiplayed");
+        errorCalendarNotDiplayed = configLoader.GetProperties("ErrorCalendarNotDiplayed");
+        errorWrongMonthYear = configLoader.GetProperties("ErrorWrongMonthYear");
 
     }
 
