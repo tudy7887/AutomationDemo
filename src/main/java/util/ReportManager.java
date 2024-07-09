@@ -3,7 +3,6 @@ package util;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import net.thucydides.core.reports.ExtendedReport;
 
 import java.io.File;
 
@@ -22,7 +21,7 @@ public class ReportManager {
         return reports;
     }
 
-    public static ExtentTest createTest(String reportName, String testName){
+    public static ExtentTest CreateTest(String reportName, String testName){
         return Report(reportName).createTest(testName);
     }
 

@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
-import fetraining.actions.CustomerDashBoardActions;
-import fetraining.actions.LoginActions;
 import util.ConfigLoader;
 import util.ReportManager;
 import util.ScreenShotManager;
@@ -44,7 +42,7 @@ public class BaseTest {
     }
 
     public void InuitTest (String testName){
-        extentTest = ReportManager.createTest(getReportName(), testName);
+        extentTest = ReportManager.CreateTest(GetReportName(), testName);
     }
 
     /**
@@ -68,7 +66,7 @@ public class BaseTest {
         }
     }
 
-    protected String getReportName() {
+    protected String GetReportName() {
         return "BaseTestReport.html";
     }
 
@@ -84,8 +82,8 @@ public class BaseTest {
 
     private void InitializeProperties(){
         configLoader = new ConfigLoader(baseTestPropertyFilePath);
-        failed = configLoader.getProperties("TESTFAILED");
-        pased = configLoader.getProperties("TESTPASSED");
-        skipped = configLoader.getProperties("TESTSKIPPED");
+        failed = configLoader.GetProperties("TESTFAILED");
+        pased = configLoader.GetProperties("TESTPASSED");
+        skipped = configLoader.GetProperties("TESTSKIPPED");
     }
 }

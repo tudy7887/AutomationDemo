@@ -1,15 +1,9 @@
 package fetraining.actions;
 
-import fetraining.elements.LoginElements;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import fetraining.elements.CustomerDashBoardElements;
 
-import java.time.Duration;
-
 public class CustomerDashBoardActions extends BaseActions {
-    private WebDriver driver;
     private CustomerDashBoardElements elements;
 
     public CustomerDashBoardActions(WebDriver driver){

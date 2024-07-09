@@ -2,13 +2,8 @@ package fetraining.actions;
 
 import fetraining.elements.LoginElements;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginActions extends BaseActions {
-    private WebDriver driver;
     private LoginElements elements;
 
     public LoginActions(WebDriver driver){
