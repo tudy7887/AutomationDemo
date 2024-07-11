@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import parabank.elements.TransferFundsPageElements;
 import parabank.interfaces.ITransferFundsPageActions;
 
-public class TransferFundsPageActions extends UserBaseActions implements ITransferFundsPageActions {
+public class TransferFundsPageActions extends BaseActions implements ITransferFundsPageActions {
     TransferFundsPageElements elements;
 
     public TransferFundsPageActions(WebDriver driver) {
@@ -18,6 +18,9 @@ public class TransferFundsPageActions extends UserBaseActions implements ITransf
     }
     public String GetTransferFoundsErrorMessage(){
         return elements.GetTransferFundsError().getText();
+    }
+    public String GetTransferFoundsSuccessfulMessage(){
+        return elements.GetTransferFundSuccessful().getText();
     }
     public void ClickTransferButton(){
         elements.GetTransferButton().click();

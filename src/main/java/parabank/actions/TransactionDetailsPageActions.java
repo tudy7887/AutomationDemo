@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import parabank.elements.TransactionDetailsPageElements;
 import parabank.interfaces.ITransactionDetailsPageActions;
 
-public class TransactionDetailsPageActions extends UserBaseActions implements ITransactionDetailsPageActions {
+public class TransactionDetailsPageActions extends BaseActions implements ITransactionDetailsPageActions {
     TransactionDetailsPageElements elements;
 
     public TransactionDetailsPageActions(WebDriver driver) {

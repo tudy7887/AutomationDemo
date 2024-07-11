@@ -1,6 +1,6 @@
 package parabank.interfaces;
 
-public interface IUpdateContractInfoPageActions extends IUserBaseActions {
+public interface IUpdateContractInfoPageActions extends IBaseActions {
    void EnterFirstName(String text);
    void EnterLastName(String text);
    void EnterAddress(String text);

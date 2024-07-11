@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import parabank.elements.UpdateContractInfoPageElements;
 import parabank.interfaces.IUpdateContractInfoPageActions;
 
-public class UpdateContractInfoPageActions extends UserBaseActions implements IUpdateContractInfoPageActions {
+public class UpdateContractInfoPageActions extends BaseActions implements IUpdateContractInfoPageActions {
     UpdateContractInfoPageElements elements;
 
     public UpdateContractInfoPageActions(WebDriver driver) {

@@ -2,7 +2,7 @@ package parabank.interfaces;
 
 import java.util.List;
 
-public interface IFindTransactionsPageActions extends IUserBaseActions {
+public interface IFindTransactionsPageActions extends IBaseActions {
     void SetFromAccountCombobox(String account);
     void EnterSearchTransactionId(String text);
     void EnterSearchTransactionDate(String text);

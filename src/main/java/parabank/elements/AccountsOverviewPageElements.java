@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class AccountsOverviewPageElements extends UserBaseElements {
+public class AccountsOverviewPageElements extends BaseElements {
     private By accountList, balanceListPlusTotal, availableList;
 
     public AccountsOverviewPageElements(WebDriver driver) {

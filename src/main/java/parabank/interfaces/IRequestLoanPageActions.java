@@ -1,6 +1,6 @@
 package parabank.interfaces;
 
-public interface IRequestLoanPageActions extends IUserBaseActions {
+public interface IRequestLoanPageActions extends IBaseActions {
     void EnterAmount(String text);
     void EnterDownPayment(String text);
     void SetFromAccountCombobox(String account);

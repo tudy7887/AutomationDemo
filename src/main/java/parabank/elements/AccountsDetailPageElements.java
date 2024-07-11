@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class AccountsDetailPageElements extends UserBaseElements {
+public class AccountsDetailPageElements extends BaseElements {
     private By accountNumber, accountType, accountBalance, accountAvailable, accountTransactionDatesList,
             accountTransactionTransactionList, accountTransactionDebitList, accountTransactionCreditList;
 

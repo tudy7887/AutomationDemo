@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BillPayPageElements extends UserBaseElements {
+public class BillPayPageElements extends BaseElements {
     private By playeeName, playeeAddress, playeeCity, playeeState, playeeZip, playeePhone, playeeAccount,
             playeeVerifyAccount, playeeAmount, playeeNameError, playeeAddressError, playeeCityError,
             playeeStateError, playeeZipError, playeePhoneError, playeeAccountError, playeeVerifyAccountError,

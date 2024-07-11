@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class FindTransactionsPageElements extends UserBaseElements {
+public class FindTransactionsPageElements extends BaseElements {
     private By selectAccountCombobox, transactionId, findByIdButton, findByIdError, transactionDate, findByDateButton,
             findByDateError, transactionBetweenDate, transactionToDate, findByDateRangeButton, findByDateRangeError,
             transactionAmount, findByAmountButton, findByAmountError, transactionResultDateList,

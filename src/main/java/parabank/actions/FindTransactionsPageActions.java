@@ -7,7 +7,7 @@ import parabank.interfaces.IFindTransactionsPageActions;
 
 import java.util.List;
 
-public class FindTransactionsPageActions extends UserBaseActions implements IFindTransactionsPageActions {
+public class FindTransactionsPageActions extends BaseActions implements IFindTransactionsPageActions {
     FindTransactionsPageElements elements;
 
     public FindTransactionsPageActions(WebDriver driver) {

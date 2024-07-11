@@ -1,6 +1,6 @@
 package parabank.interfaces;
 
-public interface IUserBaseActions extends IBaseActions {
+public interface IUserMenuActions {
     void ClickOpenNewAccountMenu();
     void ClickAccountOverviewMenu();
     void ClickTransferFundsMenu();

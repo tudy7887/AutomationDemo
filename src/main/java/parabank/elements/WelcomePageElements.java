@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class WelcomePageElements extends UserBaseElements {
+public class WelcomePageElements extends BaseElements {
     private By welcomeMessage;
 
     public WelcomePageElements(WebDriver driver) {

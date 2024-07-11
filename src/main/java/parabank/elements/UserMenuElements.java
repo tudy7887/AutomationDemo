@@ -3,13 +3,12 @@ package parabank.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import util.ConfigLoader;
 
-public class UserBaseElements extends BaseElements{
+public class UserMenuElements extends BaseElements{
     private By openNewAccountMenu, accountOverviewMenu, transferFundsMenu, billPayMenu, findTransactionsMenu,
             updateContractInfoMenu, requestLoanMenu, logOutMenu;
 
-    public UserBaseElements(WebDriver driver) {
+    public UserMenuElements(WebDriver driver) {
         super(driver);
         InitializeElements();
     }

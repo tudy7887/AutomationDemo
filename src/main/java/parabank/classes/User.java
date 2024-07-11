@@ -1,6 +1,7 @@
 package parabank.classes;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private String username;
@@ -13,7 +14,7 @@ public class User {
     private String zipCode;
     private String phone;
     private String ssn;
-    private HashMap<String, Account> Accounts =  new HashMap<String, Account>();
+    private List<Account> Accounts =  new ArrayList<Account>();
 
     public String GetUsername() { return username; }
     public void SetUsername(String username) { this.username = username; }
@@ -35,6 +36,13 @@ public class User {
     public void SetPhone(String phone) { this.phone = phone; }
     public String GetSsn() { return ssn; }
     public void SetSsn(String ssn) { this.ssn = ssn; }
-    public Account GetAccount(String accountNumber) { return Accounts.get(accountNumber); }
-    public void setAccounts(Account account) { Accounts.put(account.GetNumber(),account); }
+    public Account GetAccount(int index) { return Accounts.get(index); }
+    public Account GetAccount(String accountNumber) {
+        var index = Accounts.indexOf(accountNumber);
+        if(index < 0){
+            return null;
+        }
+        return Accounts.get(index);
+    }
+    public void setAccounts(Account account) { Accounts.add(account); }
 }

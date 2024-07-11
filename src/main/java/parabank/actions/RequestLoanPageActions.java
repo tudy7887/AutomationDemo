@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import parabank.elements.RequestLoanPageElements;
 import parabank.interfaces.IRequestLoanPageActions;
 
-public class RequestLoanPageActions extends UserBaseActions implements IRequestLoanPageActions {
+public class RequestLoanPageActions extends BaseActions implements IRequestLoanPageActions {
     RequestLoanPageElements elements;
 
     public RequestLoanPageActions(WebDriver driver) {

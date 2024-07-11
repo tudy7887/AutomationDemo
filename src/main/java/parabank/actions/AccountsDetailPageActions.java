@@ -6,7 +6,7 @@ import parabank.interfaces.IAccountsDetailPageActions;
 
 import java.util.List;
 
-public class AccountsDetailPageActions extends UserBaseActions implements IAccountsDetailPageActions {
+public class AccountsDetailPageActions extends BaseActions implements IAccountsDetailPageActions {
     AccountsDetailPageElements elements;
 
     public AccountsDetailPageActions(WebDriver driver) {

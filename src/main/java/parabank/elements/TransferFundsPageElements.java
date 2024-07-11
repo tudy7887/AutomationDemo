@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class TransferFundsPageElements extends UserBaseElements {
-    private By amount, fromAccountCombobox, toAccountCombobox, transferButton, transferFundsError;
+public class TransferFundsPageElements extends BaseElements {
+    private By amount, fromAccountCombobox, toAccountCombobox, transferButton, transferFundsError, transferFundSuccessful;
 
     public TransferFundsPageElements(WebDriver driver) {
         super(driver);
@@ -28,6 +28,9 @@ public class TransferFundsPageElements extends UserBaseElements {
     public WebElement GetTransferFundsError(){
         return driver.findElement(transferFundsError);
     }
+    public WebElement GetTransferFundSuccessful(){
+        return driver.findElement(transferFundSuccessful);
+    }
 
     private void InitializeElements(){
         amount = GetElementByCSSSlecetor(configLoader.GetProperties("amount"));
@@ -35,5 +38,6 @@ public class TransferFundsPageElements extends UserBaseElements {
         toAccountCombobox = GetElementByCSSSlecetor(configLoader.GetProperties("toAccountCombobox"));
         transferButton = GetElementByCSSSlecetor(configLoader.GetProperties("transferButton"));
         transferFundsError = GetElementByCSSSlecetor(configLoader.GetProperties("transferFundsError"));
+        transferFundSuccessful = GetElementByCSSSlecetor(configLoader.GetProperties("transferFundSuccessful"));
     }
 }

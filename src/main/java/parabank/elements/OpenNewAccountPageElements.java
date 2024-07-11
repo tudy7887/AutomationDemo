@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class OpenNewAccountPageElements extends UserBaseElements {
+public class OpenNewAccountPageElements extends BaseElements {
     private By accountTypeCombobox, existingAccountCombobox, createNewAccountButton, newAccount;
 
     public OpenNewAccountPageElements(WebDriver driver) {

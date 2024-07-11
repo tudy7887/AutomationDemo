@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import parabank.elements.OpenNewAccountPageElements;
 import parabank.interfaces.IOpenNewAccountPageActions;
 
-public class OpenNewAccountPageActions extends UserBaseActions implements IOpenNewAccountPageActions {
+public class OpenNewAccountPageActions extends BaseActions implements IOpenNewAccountPageActions {
     OpenNewAccountPageElements elements;
 
     public OpenNewAccountPageActions(WebDriver driver) {

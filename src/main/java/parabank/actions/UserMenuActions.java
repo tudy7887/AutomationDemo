@@ -2,18 +2,17 @@ package parabank.actions;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import parabank.elements.UserBaseElements;
-import parabank.elements.WelcomePageElements;
-import parabank.interfaces.IUserBaseActions;
+import parabank.elements.UserMenuElements;
+import parabank.interfaces.IUserMenuActions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserBaseActions extends BaseActions implements IUserBaseActions {
-    private UserBaseElements elements;
-    public UserBaseActions(WebDriver driver) {
+public class UserMenuActions extends BaseActions implements IUserMenuActions {
+    private UserMenuElements elements;
+    public UserMenuActions(WebDriver driver) {
         super(driver);
-        elements = new UserBaseElements(driver);
+        elements = new UserMenuElements(driver);
     }
 
     public void ClickOpenNewAccountMenu() { elements.GetOpenNewAccountMenu().click(); }
@@ -24,10 +23,4 @@ public class UserBaseActions extends BaseActions implements IUserBaseActions {
     public void ClickUpdateContractInfoMenu() { elements.GetUpdateContractInfoMenu().click(); }
     public void ClickRequestLoanMenu() { elements.GetRequestLoanMenu().click(); }
     public void ClickLogOutMenu() { elements.GetLogOutMenu().click(); }
-
-    protected List<String> GetWebElementList(List<WebElement> webElementList){
-        var result = new ArrayList<String>();
-        for (var e : webElementList) { result.add(e.getText()); }
-        return result;
-    }
 }

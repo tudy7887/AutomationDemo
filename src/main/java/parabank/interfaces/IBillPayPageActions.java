@@ -1,6 +1,6 @@
 package parabank.interfaces;
 
-public interface IBillPayPageActions extends IUserBaseActions {
+public interface IBillPayPageActions extends IBaseActions {
     void SetFromAccountCombobox(String account);
     void EnterName(String text);
     void EnterAddress(String text);

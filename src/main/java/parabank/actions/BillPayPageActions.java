@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import parabank.elements.BillPayPageElements;
 import parabank.interfaces.IBillPayPageActions;
 
-public class BillPayPageActions extends UserBaseActions implements IBillPayPageActions {
+public class BillPayPageActions extends BaseActions implements IBillPayPageActions {
     BillPayPageElements elements;
 
     public BillPayPageActions(WebDriver driver) {

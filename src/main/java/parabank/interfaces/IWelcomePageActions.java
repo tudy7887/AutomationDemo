@@ -1,5 +1,5 @@
 package parabank.interfaces;
 
-public interface IWelcomePageActions extends IUserBaseActions {
+public interface IWelcomePageActions extends IBaseActions {
     String GetWelcomeNewUserMessage();
 }

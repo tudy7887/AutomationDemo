@@ -19,5 +19,6 @@ public class Account {
     public String GetAvailable() { return Available; }
     public void SetAvailable(String available) { Available = available; }
     public List<Transaction> GetTransactions() { return Transactions; }
+    public Transaction GetTransaction(int index) { return Transactions.get(index); }
     public void AddTransaction(Transaction transaction) { Transactions.add(transaction); }
 }

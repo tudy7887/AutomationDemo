@@ -2,7 +2,7 @@ package parabank.interfaces;
 
 import java.util.List;
 
-public interface IAccountsDetailPageActions extends IUserBaseActions {
+public interface IAccountsDetailPageActions extends IBaseActions {
     void ChooseAccount(String number);
     String GetNumber();
     String GetType();

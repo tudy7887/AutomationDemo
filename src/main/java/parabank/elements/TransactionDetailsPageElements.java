@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class TransactionDetailsPageElements extends UserBaseElements {
+public class TransactionDetailsPageElements extends BaseElements {
     private By transactionDetailsId, transactionDetailsDate, transactionDetailsType, transactionDetailsAmount;
 
     public TransactionDetailsPageElements(WebDriver driver) {
