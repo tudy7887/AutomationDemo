@@ -10,6 +10,7 @@ public class LoginPageActions extends BaseActions implements ILoginPageActions {
     public LoginPageActions(WebDriver driver) {
         super(driver);
         elements = new LoginPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void EnterUsername(String text){

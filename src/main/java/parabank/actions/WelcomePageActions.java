@@ -10,6 +10,7 @@ public class WelcomePageActions extends BaseActions implements IWelcomePageActio
     public WelcomePageActions(WebDriver driver) {
         super(driver);
         elements =  new WelcomePageElements(driver);
+        SetBaseElements(elements);
     }
 
     public String GetWelcomeNewUserMessage(){

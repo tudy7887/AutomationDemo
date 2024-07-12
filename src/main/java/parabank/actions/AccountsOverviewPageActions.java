@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import parabank.elements.AccountsOverviewPageElements;
 import parabank.interfaces.IAccountsOverviewPageActions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountsOverviewPageActions extends BaseActions implements IAccountsOverviewPageActions {
@@ -12,6 +13,7 @@ public class AccountsOverviewPageActions extends BaseActions implements IAccount
     public AccountsOverviewPageActions(WebDriver driver) {
         super(driver);
         elements = new AccountsOverviewPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void ClickAccountList(int index){
@@ -23,11 +25,12 @@ public class AccountsOverviewPageActions extends BaseActions implements IAccount
     }
     public List<String> GetBalanceList(){
         var result = GetWebElementList(elements.GetBalanceListPlusTotal());
-        result.removeLast();
+        result.remove(result.size() - 1);
         return result;
     }
     public String GetTotal(){
-        return GetWebElementList(elements.GetBalanceListPlusTotal()).getLast();
+        var result = GetWebElementList(elements.GetBalanceListPlusTotal());
+        return result.get(result.size() - 1);
     }
     public List<String> GetAvailableList(){
         return GetWebElementList(elements.GetAvailableList());

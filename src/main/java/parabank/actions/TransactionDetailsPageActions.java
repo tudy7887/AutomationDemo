@@ -10,6 +10,7 @@ public class TransactionDetailsPageActions extends BaseActions implements ITrans
     public TransactionDetailsPageActions(WebDriver driver) {
         super(driver);
         elements = new TransactionDetailsPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void ChooseTransaction(String id) {

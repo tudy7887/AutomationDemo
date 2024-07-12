@@ -11,6 +11,7 @@ public class TransferFundsPageActions extends BaseActions implements ITransferFu
     public TransferFundsPageActions(WebDriver driver) {
         super(driver);
         elements =  new TransferFundsPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void EnterAmount(String text){

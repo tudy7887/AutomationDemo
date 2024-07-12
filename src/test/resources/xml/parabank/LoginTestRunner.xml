@@ -1,12 +1,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Customer Dash Board FeTraining Suite">
-    <test name="Customer Dash Board">
+<suite name="Login Para Bank Suite">
+    <test name="Login">
         <groups>
             <run>
             </run>
         </groups>
         <classes>
-            <class name="testng.fetraining.CustomerDashBoardTest"/>
+            <class name="testng.parabank.LoginTest"/>
         </classes>
     </test>
 </suite>

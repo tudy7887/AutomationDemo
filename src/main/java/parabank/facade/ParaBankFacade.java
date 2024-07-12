@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import parabank.actions.*;
 import parabank.classes.User;
 import parabank.dto.*;
+import parabank.elements.BaseElements;
 import parabank.interfaces.*;
 
 import java.util.ArrayList;
@@ -44,6 +45,10 @@ public class ParaBankFacade implements IParaBankFacade {
         users = new HashMap<String, User>();
     }
 
+    public void GoToLoginPage() {
+        iLoginPageActions.GotoPage();
+    }
+
     // Login Page
     public void ClearLoginData(){
         iLoginPageActions.ClearUsername();
@@ -58,6 +63,9 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public void ClickRegisterLink(){
         iLoginPageActions.ClickRegisterLink();
+    }
+    public String GetLoginErrorMessage(){
+        return iLoginPageActions.GetLoginErrorMessage();
     }
 
     // Register Page
