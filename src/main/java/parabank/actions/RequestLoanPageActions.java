@@ -11,6 +11,7 @@ public class RequestLoanPageActions extends BaseActions implements IRequestLoanP
     public RequestLoanPageActions(WebDriver driver) {
         super(driver);
         elements =  new RequestLoanPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void EnterAmount(String text){

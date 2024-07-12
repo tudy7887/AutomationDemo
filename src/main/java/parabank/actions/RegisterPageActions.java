@@ -10,6 +10,7 @@ public class RegisterPageActions extends BaseActions implements IRegisterPageAct
     public RegisterPageActions(WebDriver driver) {
         super(driver);
         elements = new RegisterPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void EnterFirstName(String text){

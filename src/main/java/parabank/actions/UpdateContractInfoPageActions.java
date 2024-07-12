@@ -10,6 +10,7 @@ public class UpdateContractInfoPageActions extends BaseActions implements IUpdat
     public UpdateContractInfoPageActions(WebDriver driver) {
         super(driver);
         elements =  new UpdateContractInfoPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void EnterFirstName(String text){

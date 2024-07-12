@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import parabank.classes.User;
 import parabank.elements.BaseElements;
 
 import java.time.Duration;
@@ -12,20 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseActions {
-    private BaseElements elements;
     protected WebDriver driver;
+    BaseElements baseElements;
 
     public BaseActions(WebDriver driver){
         this.driver = driver;
-        elements =  new BaseElements(driver);
+    }
+
+    protected void SetBaseElements(BaseElements elements) {
+        this.baseElements = elements;
     }
 
     public void WaitUntilLoaded() {
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(d -> d.getCurrentUrl().contains(elements.GetLink()));
+        wait.until(d -> d.getCurrentUrl().contains(baseElements.GetLink()));
     }
     public void GotoPage() {
-        driver.get(elements.GetLink());
+        driver.get(baseElements.GetLink());
+        WaitUntilLoaded();
     }
 
     protected List<String> GetWebElementList(List<WebElement> webElementList){

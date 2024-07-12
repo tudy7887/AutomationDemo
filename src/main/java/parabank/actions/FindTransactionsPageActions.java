@@ -13,6 +13,7 @@ public class FindTransactionsPageActions extends BaseActions implements IFindTra
     public FindTransactionsPageActions(WebDriver driver) {
         super(driver);
         elements = new FindTransactionsPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void SetFromAccountCombobox(String account){

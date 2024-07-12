@@ -13,6 +13,7 @@ public class UserMenuActions extends BaseActions implements IUserMenuActions {
     public UserMenuActions(WebDriver driver) {
         super(driver);
         elements = new UserMenuElements(driver);
+        SetBaseElements(elements);
     }
 
     public void ClickOpenNewAccountMenu() { elements.GetOpenNewAccountMenu().click(); }

@@ -5,11 +5,13 @@ import parabank.dto.*;
 import java.util.List;
 
 public interface IParaBankFacade {
+    void GoToLoginPage();
     // Login Page
     void ClearLoginData();
     void EnterLoginData(LoginDTO user);
     void ClickLoginButton();
     void ClickRegisterLink();
+    String GetLoginErrorMessage();
 
     // Register Page
     void ClearRegisterData();

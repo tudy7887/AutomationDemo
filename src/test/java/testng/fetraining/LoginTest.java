@@ -1,6 +1,5 @@
 package testng.fetraining;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import fetraining.actions.CustomerDashBoardActions;
@@ -14,7 +13,7 @@ import util.ConfigLoader;
 public class LoginTest extends BaseTest {
     protected LoginActions loginActions;
     protected CustomerDashBoardActions customerDashBoardActions;
-    private String feTrainingPropertyFilePath = "D:\\Learning\\SelfLearning\\Training\\src\\test\\resources\\properties\\FeTraining.properties";
+    protected String feTrainingPropertyFilePath = "src/test/resources/properties/FeTraining.properties";
     private String badUser, badPassword, loginError, wrongErrorMessage, userEmail, loginFailed, goodUser, goodPassword;
     protected String url;
 
@@ -31,22 +30,23 @@ public class LoginTest extends BaseTest {
     public void WrongCreditentialsMesage(){
         loginActions.GotoPage();
         InuitTest("Wrong Creditentials Message");
+        ClearLoginInfo();
         loginActions.SetMail(badUser);
         loginActions.SetPassword(badPassword);
         loginActions.ClickLogin();
-        Assert.assertEquals(loginActions.GetErrorMessage(), loginError, wrongErrorMessage);
-        ClearLoginInfo();
+        HardAssertEqual(loginActions.GetErrorMessage(), loginError, wrongErrorMessage);
     }
 
     @Test (groups = "authentication", priority = 0)
     public void LoginSuccessfull(){
         loginActions.GotoPage();
         InuitTest("Login Successfull");
+        ClearLoginInfo();
         loginActions.SetMail(goodUser);
         loginActions.SetPassword(goodPassword);
         loginActions.ClickLogin();
         customerDashBoardActions.WaitUntilLoaded();
-        Assert.assertEquals(customerDashBoardActions.GetEmail(), userEmail, loginFailed);
+        HardAssertEqual(customerDashBoardActions.GetEmail(), userEmail, loginFailed);
     }
 
     @Test (groups = "authentication", priority = 1)
@@ -54,6 +54,7 @@ public class LoginTest extends BaseTest {
     {
         customerDashBoardActions.ClickLogout();
         loginActions.WaitUntilLoaded();
+        HardAssertEqual(driver.getCurrentUrl(), url, "ERRoR: Logout Failed!");
     }
 
     protected void ClearLoginInfo()

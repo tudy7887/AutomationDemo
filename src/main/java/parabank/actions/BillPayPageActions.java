@@ -11,6 +11,7 @@ public class BillPayPageActions extends BaseActions implements IBillPayPageActio
     public BillPayPageActions(WebDriver driver) {
         super(driver);
         elements = new BillPayPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void SetFromAccountCombobox(String account){

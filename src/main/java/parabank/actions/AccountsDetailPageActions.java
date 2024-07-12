@@ -12,6 +12,7 @@ public class AccountsDetailPageActions extends BaseActions implements IAccountsD
     public AccountsDetailPageActions(WebDriver driver) {
         super(driver);
         elements = new AccountsDetailPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void ChooseAccount(String number) {

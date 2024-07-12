@@ -11,6 +11,7 @@ public class OpenNewAccountPageActions extends BaseActions implements IOpenNewAc
     public OpenNewAccountPageActions(WebDriver driver) {
         super(driver);
         elements =  new OpenNewAccountPageElements(driver);
+        SetBaseElements(elements);
     }
 
     public void SetTypeAccountCombobox(String type){
