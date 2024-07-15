@@ -6,6 +6,23 @@ import java.util.List;
 
 public interface IParaBankFacade {
     void GoToLoginPage();
+    String GetAccountsOverview();
+    String GetLoginPage();
+
+    // Waiters
+    void WaitUntilLoginPageLoaded();
+    void WaitUntilRegisterPageLoaded();
+    void WaitUntilWelcomePageLoaded();
+    void WaitUntilFindTransactionsPageLoaded();
+    void WaitUntilAccountsDetailPageLoaded();
+    void WaitUntilAccountsOverviewPageLoaded();
+    void WaitUntilRequestLoanPageLoaded();
+    void WaitUntilUpdateContractPageLoaded();
+    void WaitUntilTransactionDetailsPageLoaded();
+    void WaitUntilBillPayPageLoaded();
+    void WaitUntilOpenNewAccountPageLoaded();
+    void WaitUntilTransferFundsPageLoaded();
+
     // Login Page
     void ClearLoginData();
     void EnterLoginData(LoginDTO user);
@@ -19,7 +36,7 @@ public interface IParaBankFacade {
     void ClickRegister();
 
     // Welcome Page
-    void GetWelcomeNewUserMessage();
+    String GetWelcomeNewUserMessage();
 
     // Menu Actions
     void ClickOpenNewAccountMenu();
@@ -89,9 +106,10 @@ public interface IParaBankFacade {
 
     // Update Contract Info Page
     void ClearUpdateInfoData();
-    void EnterRegisterData(UpdateInfoDTO user);
+    void EnterUpdatedInfoData(UpdateInfoDTO user);
     void ClickUpdateProfileButton();
     String GetUpdateSuccessfulMessage();
+    UpdateInfoDTO GetUserInfo();
 
     // Request Loan Page
     void ClearRequestLoanData();

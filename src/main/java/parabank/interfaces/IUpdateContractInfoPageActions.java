@@ -17,4 +17,11 @@ public interface IUpdateContractInfoPageActions extends IBaseActions {
    void ClearCity();
    void ClearZipCode();
    void ClearPhone();
+   String GetFirstName();
+   String GetLastName();
+   String GetAddress();
+   String GetState();
+   String GetCity();
+   String GetZipCode();
+   String GetPhone();
 }

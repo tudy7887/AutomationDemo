@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPageElements extends  BaseElements {
-    private By username, password, loginButton, registerLink, loginError;
+    private By username, password, loginButton, registerLink, loginError, customerLogin;
 
     public LoginPageElements(WebDriver driver) {
         super(driver);
@@ -28,6 +28,9 @@ public class LoginPageElements extends  BaseElements {
     public WebElement GetRegisterLink(){
         return driver.findElement(registerLink);
     }
+    public WebElement GetCustomerLogin(){
+        return driver.findElement(customerLogin);
+    }
 
     private void InitializeElements(){
         username = GetElementByCSSSlecetor(configLoader.GetProperties("usernameLogin"));
@@ -35,5 +38,6 @@ public class LoginPageElements extends  BaseElements {
         loginError = GetElementByCSSSlecetor(configLoader.GetProperties("loginError"));
         loginButton = GetElementByCSSSlecetor(configLoader.GetProperties("loginButton"));
         registerLink = GetElementByCSSSlecetor(configLoader.GetProperties("registerLink"));
+        customerLogin = GetElementByCSSSlecetor(configLoader.GetProperties("customerLogin"));
     }
 }
