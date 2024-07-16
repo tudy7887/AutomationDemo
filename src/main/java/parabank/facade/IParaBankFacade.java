@@ -9,20 +9,6 @@ public interface IParaBankFacade {
     String GetAccountsOverview();
     String GetLoginPage();
 
-    // Waiters
-    void WaitUntilLoginPageLoaded();
-    void WaitUntilRegisterPageLoaded();
-    void WaitUntilWelcomePageLoaded();
-    void WaitUntilFindTransactionsPageLoaded();
-    void WaitUntilAccountsDetailPageLoaded();
-    void WaitUntilAccountsOverviewPageLoaded();
-    void WaitUntilRequestLoanPageLoaded();
-    void WaitUntilUpdateContractPageLoaded();
-    void WaitUntilTransactionDetailsPageLoaded();
-    void WaitUntilBillPayPageLoaded();
-    void WaitUntilOpenNewAccountPageLoaded();
-    void WaitUntilTransferFundsPageLoaded();
-
     // Login Page
     void ClearLoginData();
     void EnterLoginData(LoginDTO user);

@@ -16,4 +16,5 @@ public class WelcomePageActions extends BaseActions implements IWelcomePageActio
     public String GetWelcomeNewUserMessage(){
         return elements.GetWelcomeMessage().getText();
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

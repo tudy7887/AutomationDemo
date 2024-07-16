@@ -3,7 +3,10 @@ package parabank.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class FindTransactionsPageElements extends BaseElements {
@@ -64,6 +67,17 @@ public class FindTransactionsPageElements extends BaseElements {
     public List<WebElement> GetTransactionResultTransactionList() { return driver.findElements(transactionResultTransactionList); }
     public List<WebElement> GetTransactionResultDebitList() { return driver.findElements(transactionResultDebitList); }
     public List<WebElement> GetTransactionResultCreditList() { return driver.findElements(transactionResultCreditList); }
+    public void WaitUntilDataIsLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> !d.findElement(selectAccountCombobox).getText().isEmpty());
+    }
+    public void WaitUntilResultIsLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> d.findElement(transactionResultDateList).isDisplayed());
+        wait.until(d -> d.findElement(transactionResultTransactionList).isDisplayed());
+        wait.until(d -> d.findElement(transactionResultDebitList).isDisplayed());
+        wait.until(d -> d.findElement(transactionResultCreditList).isDisplayed());
+    }
 
     private void InitializeElements(){
         selectAccountCombobox = GetElementByCSSSlecetor(configLoader.GetProperties("selectAccountCombobox"));

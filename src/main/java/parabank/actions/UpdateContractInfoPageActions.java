@@ -39,6 +39,7 @@ public class UpdateContractInfoPageActions extends BaseActions implements IUpdat
         elements.GetUpdateProfileButton().click();
     }
     public String GetUpdateSuccessfulMessage(){
+        elements.WaitUntilSuccessfulIsLoaded();
         return elements.GetUpdateSuccessful().getText();
     }
 
@@ -71,4 +72,6 @@ public class UpdateContractInfoPageActions extends BaseActions implements IUpdat
     public String GetCity() { return elements.GetCityUpdate().getText(); }
     public String GetZipCode() { return elements.GetZipCodeUpdate().getText(); }
     public String GetPhone(){ return elements.GetPhoneUpdate().getText(); }
+
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

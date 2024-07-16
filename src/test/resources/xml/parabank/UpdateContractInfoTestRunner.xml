@@ -3,6 +3,7 @@
     <test name="Update Profile Info">
         <groups>
             <run>
+                <exclude name="parabankloginfail"></exclude>
             </run>
         </groups>
         <classes>

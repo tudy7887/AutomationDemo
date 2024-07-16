@@ -3,6 +3,10 @@ package parabank.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BillPayPageElements extends BaseElements {
     private By playeeName, playeeAddress, playeeCity, playeeState, playeeZip, playeePhone, playeeAccount,
@@ -78,6 +82,14 @@ public class BillPayPageElements extends BaseElements {
     }
     public WebElement GetPlayeeAmountError(){
         return driver.findElement(playeeAmountError);
+    }
+    public void WaitUntilDataIsLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> !d.findElement(fromAccountBillPaymentCombobox).getText().isEmpty());
+    }
+    public void WaitUntilPayCompletedLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> d.findElement(billPayCompleted).isDisplayed());
     }
 
     private void InitializeElements(){

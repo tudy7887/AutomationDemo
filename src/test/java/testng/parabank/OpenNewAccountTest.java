@@ -22,16 +22,17 @@ public class OpenNewAccountTest extends LoginTest{
         AddScreenshot("Accounts Overview", "Existing Accounts Number");
         iParaBankFacade.ClickOpenNewAccountMenu();
         iParaBankFacade.FillNewAccountData(mainAccountNumber, checking);
+        AddScreenshot("Create New Account", "Fill New Account Data");
         iParaBankFacade.ClickCreateNewAccount();
         var newAccountNumber = iParaBankFacade.GetNewAccountNumber();
         AddScreenshot("New Checking Account", "New Account Number");
         iParaBankFacade.ClickNewAccount();
         var details = iParaBankFacade.GetAccountsDetails();
         AddScreenshot("New Checking Account Details", "New Account Details");
-        HardAssertEqual(details.Number, newAccountNumber, wrongAccountNumberMessage);
-        HardAssertEqual(details.Type, checking, wrongAccountTypeMessage);
-        HardAssertEqual(details.Balance, startCash, wrongAccountBalanceMessage);
-        HardAssertEqual(details.Available, startCash, wrongAccountAvailableMessage);
+        SoftAssertEqual(details.Number, newAccountNumber, wrongAccountNumberMessage);
+        SoftAssertEqual(details.Type, checking, wrongAccountTypeMessage);
+        SoftAssertEqual(details.Balance, startCash, wrongAccountBalanceMessage);
+        SoftAssertEqual(details.Available, startCash, wrongAccountAvailableMessage);
     }
 
     @Test(dependsOnMethods = "LoginSuccessful", groups = "newaccount")
@@ -42,14 +43,15 @@ public class OpenNewAccountTest extends LoginTest{
         AddScreenshot("Accounts Overview", "Existing Accounts Number");
         iParaBankFacade.ClickOpenNewAccountMenu();
         iParaBankFacade.FillNewAccountData(mainAccountNumber, savings);
+        AddScreenshot("Create New Account", "Fill New Account Data");
         iParaBankFacade.ClickCreateNewAccount();
         var newAccountNumber = iParaBankFacade.GetNewAccountNumber();
         AddScreenshot("New Checking Account", "New Account Number");
         iParaBankFacade.ClickNewAccount();
         var details = iParaBankFacade.GetAccountsDetails();
         AddScreenshot("New Checking Account Details", "New Account Details");
-        HardAssertEqual(details.Number, newAccountNumber, wrongAccountNumberMessage);
-        HardAssertEqual(details.Type, savings, wrongAccountTypeMessage);
+        SoftAssertEqual(details.Number, newAccountNumber, wrongAccountNumberMessage);
+        SoftAssertEqual(details.Type, savings, wrongAccountTypeMessage);
         SoftAssertEqual(details.Balance, startCash, wrongAccountTypeMessage);
         SoftAssertEqual(details.Available, startCash, wrongAccountTypeMessage);
     }

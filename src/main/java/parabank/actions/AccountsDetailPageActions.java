@@ -48,4 +48,5 @@ public class AccountsDetailPageActions extends BaseActions implements IAccountsD
     public List<String> GetTransactionCreditList(){
         return GetWebElementList(elements.GetAccountTransactionCreditList());
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

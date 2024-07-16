@@ -18,9 +18,11 @@ public class TransferFundsPageActions extends BaseActions implements ITransferFu
         elements.GetAmount().sendKeys(text);
     }
     public String GetTransferFoundsErrorMessage(){
+        elements.WaitUntilErrorsLoaded();
         return elements.GetTransferFundsError().getText();
     }
     public String GetTransferFoundsSuccessfulMessage(){
+        elements.WaitUntilSuccessfulIsLoaded();
         return elements.GetTransferFundSuccessful().getText();
     }
     public void ClickTransferButton(){
@@ -32,4 +34,5 @@ public class TransferFundsPageActions extends BaseActions implements ITransferFu
     public void SetToAccountComboBox(String account){
         new Select(elements.GetToAccountCombobox()).selectByVisibleText(account);
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

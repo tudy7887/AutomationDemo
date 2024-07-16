@@ -27,18 +27,23 @@ public class RequestLoanPageActions extends BaseActions implements IRequestLoanP
         elements.GetLoanApplyButton().click();
     }
     public String GetErrorRequestMessage(){
+        elements.WaitUntilErrorLoaded();
         return elements.GetLoanRequestError().getText();
     }
     public String GetStatusMessage(){
+        elements.WaitUntilStatusLoaded();
         return elements.GetLoanStatus().getText();
     }
     public String GetApprovedMessage(){
+        elements.WaitUntilStatusLoaded();
         return elements.GetLoanAccountApproved().getText();
     }
     public String GetDeniedMessage(){
+        elements.WaitUntilStatusLoaded();
         return elements.GetLoanAccountDenied().getText();
     }
     public String GetAccountNumber(){
+        elements.WaitUntilStatusLoaded();
         return elements.GetLoanAccountNumber().getText();
     }
     public void ClickOnAccountNumber(){
@@ -50,4 +55,5 @@ public class RequestLoanPageActions extends BaseActions implements IRequestLoanP
     public void ClearDownPayment(){
         elements.GetLoanDownPayment().clear();
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

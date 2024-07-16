@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface IAccountsDetailPageActions extends IBaseActions {
     void ChooseAccount(String number);
+    void WaitUntilDataIsLoaded();
     String GetNumber();
     String GetType();
     String GetBalance();

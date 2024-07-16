@@ -24,4 +24,5 @@ public interface IUpdateContractInfoPageActions extends IBaseActions {
    String GetCity();
    String GetZipCode();
    String GetPhone();
+   void WaitUntilDataIsLoaded();
 }

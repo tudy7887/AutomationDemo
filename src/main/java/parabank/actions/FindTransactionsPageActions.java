@@ -83,15 +83,20 @@ public class FindTransactionsPageActions extends BaseActions implements IFindTra
     }
 
     public List<String> GetResultDateList(){
+        elements.WaitUntilResultIsLoaded();
         return GetWebElementList(elements.GetTransactionResultDateList());
     }
     public List<String> GetResultTransactionList(){
+        elements.WaitUntilResultIsLoaded();
         return GetWebElementList(elements.GetTransactionResultTransactionList());
     }
     public List<String> GetResultDebitList(){
+        elements.WaitUntilResultIsLoaded();
         return GetWebElementList(elements.GetTransactionResultDebitList());
     }
     public List<String> GetResultCreditList(){
+        elements.WaitUntilResultIsLoaded();
         return GetWebElementList(elements.GetTransactionResultCreditList());
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }
