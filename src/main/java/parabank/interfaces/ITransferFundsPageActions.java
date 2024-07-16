@@ -7,4 +7,5 @@ public interface ITransferFundsPageActions extends IBaseActions {
     void ClickTransferButton();
     void SetFromAccountComboBox(String account);
     void SetToAccountComboBox(String account);
+    void WaitUntilDataIsLoaded();
 }

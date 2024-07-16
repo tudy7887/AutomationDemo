@@ -13,4 +13,5 @@ public interface IRequestLoanPageActions extends IBaseActions {
     void ClickOnAccountNumber();
     void ClearAmount();
     void ClearDownPayment();
+    void WaitUntilDataIsLoaded();
 }

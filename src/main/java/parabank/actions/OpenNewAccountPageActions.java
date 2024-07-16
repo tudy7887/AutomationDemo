@@ -21,6 +21,7 @@ public class OpenNewAccountPageActions extends BaseActions implements IOpenNewAc
         new Select(elements.GetExistingAccountCombobox()).selectByVisibleText(account);
     }
     public String GetNewAccount(){
+        elements.WaitUntilNewAccountLoaded();
         return elements.GetNewAccount().getText();
     }
     public void ClickCreateNewAccount(){
@@ -29,4 +30,5 @@ public class OpenNewAccountPageActions extends BaseActions implements IOpenNewAc
     public void ClickNewAccount(){
         elements.GetNewAccount().click();
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

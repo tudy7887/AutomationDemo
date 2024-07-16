@@ -50,6 +50,7 @@ public class BillPayPageActions extends BaseActions implements IBillPayPageActio
         elements.GetSendPaymentButton().click();
     }
     public String GetBillCompletedMessage(){
+        elements.WaitUntilPayCompletedLoaded();
         return elements.GetBillPayCompleted().getText();
     }
 
@@ -108,4 +109,6 @@ public class BillPayPageActions extends BaseActions implements IBillPayPageActio
     public void ClearAmount(){
         elements.GetPlayeeAmount().clear();
     }
+
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

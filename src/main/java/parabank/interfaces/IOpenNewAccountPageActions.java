@@ -6,4 +6,5 @@ public interface IOpenNewAccountPageActions extends IBaseActions {
     String GetNewAccount();
     void ClickCreateNewAccount();
     void ClickNewAccount();
+    void WaitUntilDataIsLoaded();
 }

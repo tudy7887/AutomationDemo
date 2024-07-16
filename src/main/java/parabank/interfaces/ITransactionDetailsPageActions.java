@@ -6,4 +6,5 @@ public interface ITransactionDetailsPageActions extends IBaseActions {
     String GetTransactionDate();
     String GetTransactionType();
     String GetTransactionAmount();
+    void WaitUntilDataIsLoaded();
 }

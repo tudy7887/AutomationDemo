@@ -27,4 +27,5 @@ public interface IFindTransactionsPageActions extends IBaseActions {
     List<String> GetResultTransactionList();
     List<String> GetResultDebitList();
     List<String> GetResultCreditList();
+    void WaitUntilDataIsLoaded();
 }

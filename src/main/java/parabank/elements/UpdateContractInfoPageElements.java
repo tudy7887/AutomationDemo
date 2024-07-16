@@ -3,6 +3,10 @@ package parabank.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class UpdateContractInfoPageElements extends BaseElements {
     private By firstNameUpdate, lastNameUpdate, addressUpdate, cityUpdate, stateUpdate, zipCodeUpdate,
@@ -40,6 +44,20 @@ public class UpdateContractInfoPageElements extends BaseElements {
     }
     public WebElement GetUpdateSuccessful(){
         return driver.findElement(updateSuccessful);
+    }
+    public void WaitUntilDataIsLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> d.findElement(firstNameUpdate).isDisplayed());
+        wait.until(d -> d.findElement(lastNameUpdate).isDisplayed());
+        wait.until(d -> d.findElement(addressUpdate).isDisplayed());
+        wait.until(d -> d.findElement(cityUpdate).isDisplayed());
+        wait.until(d -> d.findElement(stateUpdate).isDisplayed());
+        wait.until(d -> d.findElement(zipCodeUpdate).isDisplayed());
+        wait.until(d -> d.findElement(phoneUpdate).isDisplayed());
+    }
+    public void WaitUntilSuccessfulIsLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> d.findElement(updateSuccessful).isDisplayed());
     }
 
     private void InitializeElements(){

@@ -2,15 +2,11 @@ package parabank.facade;
 
 import org.openqa.selenium.WebDriver;
 import parabank.actions.*;
-import parabank.classes.User;
 import parabank.dto.*;
-import parabank.elements.BaseElements;
 import parabank.interfaces.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ParaBankFacade implements IParaBankFacade {
     protected IAccountsDetailPageActions iAccountsDetailPageActions;
@@ -26,7 +22,6 @@ public class ParaBankFacade implements IParaBankFacade {
     protected IUpdateContractInfoPageActions iUpdateContractInfoPageActions;
     protected IWelcomePageActions iWelcomePageActions;
     protected IUserMenuActions iUserMenuActions;
-    protected Map<String, User> users;
 
     public ParaBankFacade(WebDriver driver){
         iAccountsDetailPageActions = new AccountsDetailPageActions(driver);
@@ -42,51 +37,18 @@ public class ParaBankFacade implements IParaBankFacade {
         iUpdateContractInfoPageActions = new UpdateContractInfoPageActions(driver);
         iWelcomePageActions = new WelcomePageActions(driver);
         iUserMenuActions = new UserMenuActions(driver);
-        users = new HashMap<String, User>();
     }
 
     public void GoToLoginPage() {
         iLoginPageActions.GotoPage();
     }
-    public String GetAccountsOverview() { return iAccountsOverviewPageActions.GetAccountOverviewTitle(); }
-    public String GetLoginPage() { return iLoginPageActions.GetCustomerLoginTitle(); }
-
-    // Waiters
-    public void WaitUntilLoginPageLoaded(){
-        iLoginPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilRegisterPageLoaded(){
-        iRegisterPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilWelcomePageLoaded(){
-        iWelcomePageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilFindTransactionsPageLoaded(){
-        iFindTransactionsPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilAccountsDetailPageLoaded(){
-        iAccountsDetailPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilAccountsOverviewPageLoaded(){
+    public String GetAccountsOverview() {
         iAccountsOverviewPageActions.WaitUntilLoaded();
+        return iAccountsOverviewPageActions.GetAccountOverviewTitle();
     }
-    public void WaitUntilRequestLoanPageLoaded(){
-        iRequestLoanPageActions.WaitUntilLoaded();
-    }
-    public  void WaitUntilUpdateContractPageLoaded(){
-        iUpdateContractInfoPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilTransactionDetailsPageLoaded(){
-        iTransactionDetailsPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilBillPayPageLoaded(){
-        iBillPayPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilOpenNewAccountPageLoaded(){
-        iOpenNewAccountPageActions.WaitUntilLoaded();
-    }
-    public void WaitUntilTransferFundsPageLoaded(){
-        iTransferFundsPageActions.WaitUntilLoaded();
+    public String GetLoginPage() {
+        iLoginPageActions.WaitUntilLoaded();
+        return iLoginPageActions.GetCustomerLoginTitle();
     }
 
     // Login Page
@@ -100,9 +62,11 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public void ClickLoginButton(){
         iLoginPageActions.ClickLoginButton();
+        iAccountsOverviewPageActions.WaitUntilLoaded();
     }
     public void ClickRegisterLink(){
         iLoginPageActions.ClickRegisterLink();
+        iRegisterPageActions.WaitUntilLoaded();
     }
     public String GetLoginErrorMessage(){
         return iLoginPageActions.GetLoginErrorMessage();
@@ -137,6 +101,7 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public void ClickRegister(){
         iRegisterPageActions.ClickRegisterButtonButton();
+        iWelcomePageActions.WaitUntilDataIsLoaded();
     }
 
     // Welcome Page
@@ -147,27 +112,35 @@ public class ParaBankFacade implements IParaBankFacade {
     // Menu Actions
     public void ClickOpenNewAccountMenu(){
         iUserMenuActions.ClickOpenNewAccountMenu();
+        iOpenNewAccountPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickAccountOverviewMenu(){
         iUserMenuActions.ClickAccountOverviewMenu();
+        iAccountsOverviewPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickTransferFundsMenu(){
         iUserMenuActions.ClickTransferFundsMenu();
+        iTransactionDetailsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickBillPayMenu(){
         iUserMenuActions.ClickBillPayMenu();
+        iBillPayPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickFindTransactionsMenu(){
         iUserMenuActions.ClickFindTransactionsMenu();
+        iFindTransactionsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickUpdateContractInfoMenu(){
         iUserMenuActions.ClickUpdateContractInfoMenu();
+        iUpdateContractInfoPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickRequestLoanMenu(){
         iUserMenuActions.ClickRequestLoanMenu();
+        iRequestLoanPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickLogOutMenu(){
         iUserMenuActions.ClickLogOutMenu();
+        iLoginPageActions.WaitUntilLoaded();
     }
 
     // Open New Account Page
@@ -183,10 +156,12 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public void ClickNewAccount(){
         iOpenNewAccountPageActions.ClickNewAccount();
+        iAccountsDetailPageActions.WaitUntilDataIsLoaded();
     }
 
     // Account Overview Page
     public List<AccountOverviewDTO> GetAccounts(){
+        iAccountsOverviewPageActions.WaitUntilDataIsLoaded();
         var result = new ArrayList<AccountOverviewDTO>();
         var numbers = iAccountsOverviewPageActions.GetAccountList();
         var balances = iAccountsOverviewPageActions.GetBalanceList();
@@ -204,13 +179,16 @@ public class ParaBankFacade implements IParaBankFacade {
         return result;
     }
     public String GetTotal(){
+        iAccountsOverviewPageActions.WaitUntilDataIsLoaded();
         return iAccountsOverviewPageActions.GetTotal();
     }
     public void ClickAccountInAccountOverview(int index){
         iAccountsOverviewPageActions.ClickAccountList(index);
         iAccountsDetailPageActions.ChooseAccount(String.valueOf(index));
+        iAccountsDetailPageActions.WaitUntilDataIsLoaded();
     }
     public AccountDetailDTO GetAccountsDetails(){
+        iAccountsDetailPageActions.WaitUntilDataIsLoaded();
         var result = new AccountDetailDTO();
         var transactionsOverview = new ArrayList<TransactionOverwiewDTO>();
         var dates = iAccountsDetailPageActions.GetTransactionDatesList();
@@ -238,6 +216,7 @@ public class ParaBankFacade implements IParaBankFacade {
     public void ClickTransactionOverview(int index){
         iAccountsDetailPageActions.ClickTransactionTransactionList(index);
         iTransactionDetailsPageActions.ChooseTransaction(String.valueOf(index));
+        iTransactionDetailsPageActions.WaitUntilDataIsLoaded();
     }
     // Transfer Funds Page
     
@@ -347,15 +326,19 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public void ClickFindByIdButton(){
         iFindTransactionsPageActions.ClickFindByIdButton();
+        iFindTransactionsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickFindByDateButton(){
         iFindTransactionsPageActions.ClickFindByDateButton();
+        iFindTransactionsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickFindByDateRangeButton(){
         iFindTransactionsPageActions.ClickFindByDateRangeButton();
+        iFindTransactionsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickFindByAmountButton(){
         iFindTransactionsPageActions.ClickFindByAmountButton();
+        iFindTransactionsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClearSearchTransactionId(){
         iFindTransactionsPageActions.ClearSearchTransactionId();
@@ -392,6 +375,8 @@ public class ParaBankFacade implements IParaBankFacade {
     public void ClickTransactionSearch(int index){
         iFindTransactionsPageActions.ClickResultTransactionList(index);
         iTransactionDetailsPageActions.ChooseTransaction(String.valueOf(index));
+        iTransactionDetailsPageActions.WaitUntilLoaded();
+        iTransactionDetailsPageActions.WaitUntilDataIsLoaded();
     }
     public TransactionDetailDTO GetTransactionDetail(){
         var result = new TransactionDetailDTO();
@@ -428,6 +413,7 @@ public class ParaBankFacade implements IParaBankFacade {
         return iUpdateContractInfoPageActions.GetUpdateSuccessfulMessage();
     }
     public UpdateInfoDTO GetUserInfo(){
+        iUpdateContractInfoPageActions.WaitUntilDataIsLoaded();
         var user = new UpdateInfoDTO();
         user.FirstName = iUpdateContractInfoPageActions.GetFirstName();
         user.LastName = iUpdateContractInfoPageActions.GetLastName();

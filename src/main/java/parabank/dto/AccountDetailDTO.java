@@ -1,7 +1,5 @@
 package parabank.dto;
 
-import parabank.classes.Transaction;
-
 import java.util.List;
 
 public class AccountDetailDTO {

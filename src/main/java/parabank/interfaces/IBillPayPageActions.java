@@ -31,4 +31,5 @@ public interface IBillPayPageActions extends IBaseActions {
     void ClearAccountVerification();
     void ClearPhone();
     void ClearAmount();
+    void WaitUntilDataIsLoaded();
 }

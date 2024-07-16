@@ -16,13 +16,14 @@ public class UpdateContractInfoTest extends LoginTest{
     }
 
     @Test(dependsOnMethods = "LoginSuccessful", groups = "updatecontactinfo")
-    public void OenNewSavingAccount() {
-        InuitTest("Oen New Checking Account");
+    public void UpdateUserInfo() {
+        InuitTest("Update User Info");
         iParaBankFacade.ClickUpdateContractInfoMenu();
-        AddScreenshot("Initial User Info", "Initial User Info");
         var initialInfo = iParaBankFacade.GetUserInfo();
+        AddScreenshot("Initial User Info", "Initial User Info");
+        iParaBankFacade.ClearUpdateInfoData();
         iParaBankFacade.EnterUpdatedInfoData(updateData);
-        iParaBankFacade.ClickUpdateContractInfoMenu();
+        iParaBankFacade.ClickUpdateProfileButton();
         AddScreenshot("Update Info Successful", "Updated User Info Successful Message");
         SoftAssertEqual(iParaBankFacade.GetUpdateSuccessfulMessage(), updateSuccessfulMessage, wrongUpdateSuccessfulMessage);
         iParaBankFacade.ClickUpdateContractInfoMenu();

@@ -3,7 +3,10 @@ package parabank.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class AccountsDetailPageElements extends BaseElements {
@@ -33,6 +36,13 @@ public class AccountsDetailPageElements extends BaseElements {
     public List<WebElement> GetAccountTransactionTransactionList() { return driver.findElements(accountTransactionTransactionList); }
     public List<WebElement> GetAccountTransactionDebitList() { return driver.findElements(accountTransactionDebitList); }
     public List<WebElement> GetAccountTransactionCreditList() { return driver.findElements(accountTransactionCreditList); }
+    public void WaitUntilDataIsLoaded() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> d.findElement(accountNumber).isDisplayed());
+        wait.until(d -> d.findElement(accountType).isDisplayed());
+        wait.until(d -> d.findElement(accountBalance).isDisplayed());
+        wait.until(d -> d.findElement(accountAvailable).isDisplayed());
+    }
 
     private void InitializeElements(){
         accountNumber = GetElementByCSSSlecetor(configLoader.GetProperties("accountNumber"));

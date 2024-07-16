@@ -29,4 +29,5 @@ public class TransactionDetailsPageActions extends BaseActions implements ITrans
     public String GetTransactionAmount(){
         return elements.GetTransactionDetailsAmount().getText();
     }
+    public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }
