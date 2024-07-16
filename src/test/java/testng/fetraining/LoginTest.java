@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import fetraining.actions.CustomerDashBoardActions;
 import fetraining.actions.LoginActions;
-import testng.BaseTest;
+import basetest.BaseTest;
 import util.ConfigLoader;
 
 // user: tudor.niculae@email.com
@@ -27,9 +27,9 @@ public class LoginTest extends BaseTest {
     }
 
     @Test (groups = "loginfailmessages", priority = 1)
-    public void WrongCreditentialsMesage(){
+    public void WrongCredentialsMessage(){
         loginActions.GotoPage();
-        InuitTest("Wrong Creditentials Message");
+        InuitTest("Wrong Credentials Message");
         ClearLoginInfo();
         loginActions.SetMail(badUser);
         loginActions.SetPassword(badPassword);
@@ -38,9 +38,9 @@ public class LoginTest extends BaseTest {
     }
 
     @Test (groups = "authentication", priority = 0)
-    public void LoginSuccessfull(){
+    public void LoginSuccessful(){
         loginActions.GotoPage();
-        InuitTest("Login Successfull");
+        InuitTest("Login Successful");
         ClearLoginInfo();
         loginActions.SetMail(goodUser);
         loginActions.SetPassword(goodPassword);

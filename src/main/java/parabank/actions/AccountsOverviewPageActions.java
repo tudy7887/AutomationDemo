@@ -23,6 +23,9 @@ public class AccountsOverviewPageActions extends BaseActions implements IAccount
     public List<String> GetAccountList(){
         return GetWebElementList(elements.GetAccountList());
     }
+
+    public String GetAccountOverviewTitle() { return elements.GetAccountsOverviewTitle().getText(); }
+
     public List<String> GetBalanceList(){
         var result = GetWebElementList(elements.GetBalanceListPlusTotal());
         result.remove(result.size() - 1);

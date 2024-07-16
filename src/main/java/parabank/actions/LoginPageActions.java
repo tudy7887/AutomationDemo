@@ -22,6 +22,9 @@ public class LoginPageActions extends BaseActions implements ILoginPageActions {
     public String GetLoginErrorMessage(){
         return elements.GetLoginError().getText();
     }
+    public String GetCustomerLoginTitle(){
+        return elements.GetCustomerLogin().getText();
+    }
     public void ClickLoginButton(){
         elements.GetLoginButton().click();
     }

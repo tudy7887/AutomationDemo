@@ -48,6 +48,46 @@ public class ParaBankFacade implements IParaBankFacade {
     public void GoToLoginPage() {
         iLoginPageActions.GotoPage();
     }
+    public String GetAccountsOverview() { return iAccountsOverviewPageActions.GetAccountOverviewTitle(); }
+    public String GetLoginPage() { return iLoginPageActions.GetCustomerLoginTitle(); }
+
+    // Waiters
+    public void WaitUntilLoginPageLoaded(){
+        iLoginPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilRegisterPageLoaded(){
+        iRegisterPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilWelcomePageLoaded(){
+        iWelcomePageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilFindTransactionsPageLoaded(){
+        iFindTransactionsPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilAccountsDetailPageLoaded(){
+        iAccountsDetailPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilAccountsOverviewPageLoaded(){
+        iAccountsOverviewPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilRequestLoanPageLoaded(){
+        iRequestLoanPageActions.WaitUntilLoaded();
+    }
+    public  void WaitUntilUpdateContractPageLoaded(){
+        iUpdateContractInfoPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilTransactionDetailsPageLoaded(){
+        iTransactionDetailsPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilBillPayPageLoaded(){
+        iBillPayPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilOpenNewAccountPageLoaded(){
+        iOpenNewAccountPageActions.WaitUntilLoaded();
+    }
+    public void WaitUntilTransferFundsPageLoaded(){
+        iTransferFundsPageActions.WaitUntilLoaded();
+    }
 
     // Login Page
     public void ClearLoginData(){
@@ -100,8 +140,8 @@ public class ParaBankFacade implements IParaBankFacade {
     }
 
     // Welcome Page
-    public void GetWelcomeNewUserMessage(){
-        iWelcomePageActions.GetWelcomeNewUserMessage();
+    public String GetWelcomeNewUserMessage(){
+        return iWelcomePageActions.GetWelcomeNewUserMessage();
     }
 
     // Menu Actions
@@ -372,7 +412,7 @@ public class ParaBankFacade implements IParaBankFacade {
         iUpdateContractInfoPageActions.ClearZipCode();
         iUpdateContractInfoPageActions.ClearPhone();
     }
-    public void EnterRegisterData(UpdateInfoDTO user){
+    public void EnterUpdatedInfoData(UpdateInfoDTO user){
         iUpdateContractInfoPageActions.EnterFirstName(user.FirstName);
         iUpdateContractInfoPageActions.EnterLastName(user.LastName);
         iUpdateContractInfoPageActions.EnterAddress(user.Address);
@@ -386,6 +426,17 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public String GetUpdateSuccessfulMessage(){
         return iUpdateContractInfoPageActions.GetUpdateSuccessfulMessage();
+    }
+    public UpdateInfoDTO GetUserInfo(){
+        var user = new UpdateInfoDTO();
+        user.FirstName = iUpdateContractInfoPageActions.GetFirstName();
+        user.LastName = iUpdateContractInfoPageActions.GetLastName();
+        user.Address = iUpdateContractInfoPageActions.GetAddress();
+        user.State = iUpdateContractInfoPageActions.GetState();
+        user.City = iUpdateContractInfoPageActions.GetCity();
+        user.ZipCode = iUpdateContractInfoPageActions.GetZipCode();
+        user.Phone = iUpdateContractInfoPageActions.GetPhone();
+        return user;
     }
 
     // Request Loan Page

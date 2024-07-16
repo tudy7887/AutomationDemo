@@ -3,7 +3,7 @@ package testng.fetraining;
 import org.testng.annotations.*;
 
 public class CustomerDashBoardTest extends LoginTest {
-    private String currentMonthYear, nextmonthyear, previousMonthYear, fewMonthYearsAgo, errorCalendarDiplayed, errorCalendarNotDiplayed, errorWrongMonthYear;
+    private String currentMonthYear, nextMonthYear, previousMonthYear, fewMonthYearsAgo, errorCalendarDisplayed, errorCalendarNotDisplayed, errorWrongMonthYear;
 
     @BeforeSuite (alwaysRun = true)
     public void Setup(){
@@ -11,7 +11,7 @@ public class CustomerDashBoardTest extends LoginTest {
         InitializeProperties();
     }
 
-    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
+    @Test (dependsOnMethods = "LoginSuccessful", groups = "calendarnavigationbutton")
     public void PreviousButton() {
         customerDashBoardActions.ClickToday();
         InuitTest("Previous");
@@ -19,15 +19,15 @@ public class CustomerDashBoardTest extends LoginTest {
         HardAssertEqual(customerDashBoardActions.GetMonthDayText(), previousMonthYear, errorWrongMonthYear);
     }
 
-    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
+    @Test (dependsOnMethods = "LoginSuccessful", groups = "calendarnavigationbutton")
     public void ForwardButton() {
         customerDashBoardActions.ClickToday();
         InuitTest("Forward");
         customerDashBoardActions.ClickForward();
-        HardAssertEqual(customerDashBoardActions.GetMonthDayText(), nextmonthyear, errorWrongMonthYear);
+        HardAssertEqual(customerDashBoardActions.GetMonthDayText(), nextMonthYear, errorWrongMonthYear);
     }
 
-    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
+    @Test (dependsOnMethods = "LoginSuccessful", groups = "calendarnavigationbutton")
     public void TodayButton() {
         customerDashBoardActions.ClickToday();
         InuitTest("Today");
@@ -39,23 +39,23 @@ public class CustomerDashBoardTest extends LoginTest {
         HardAssertEqual(customerDashBoardActions.GetMonthDayText(), currentMonthYear, errorWrongMonthYear);
     }
 
-    @Test (dependsOnMethods = "LoginSuccessfull", groups = "calendarnavigationbutton")
+    @Test (dependsOnMethods = "LoginSuccessful", groups = "calendarnavigationbutton")
     public void ToggleCalendarCheckBox(){
         InuitTest("ToggleCalendar");
-        HardAssertTrue(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarNotDiplayed);
+        HardAssertTrue(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarNotDisplayed);
         customerDashBoardActions.ClickToggleCalendar();
-        HardAssertFalse(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarDiplayed);
+        HardAssertFalse(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarDisplayed);
         customerDashBoardActions.ClickToggleCalendar();
-        HardAssertTrue(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarNotDiplayed);
+        HardAssertTrue(customerDashBoardActions.IsCalendarDisplayed(), errorCalendarNotDisplayed);
     }
 
     private void InitializeProperties(){
         currentMonthYear = configLoader.GetProperties("CurrentMonthYear");
-        nextmonthyear = configLoader.GetProperties("NextMonthYear");
+        nextMonthYear = configLoader.GetProperties("NextMonthYear");
         previousMonthYear = configLoader.GetProperties("PreviousMonthYear");
         fewMonthYearsAgo = configLoader.GetProperties("FewMonthYearsAgo");
-        errorCalendarDiplayed = configLoader.GetProperties("ErrorCalendarDiplayed");
-        errorCalendarNotDiplayed = configLoader.GetProperties("ErrorCalendarNotDiplayed");
+        errorCalendarDisplayed = configLoader.GetProperties("ErrorCalendarDiplayed");
+        errorCalendarNotDisplayed = configLoader.GetProperties("ErrorCalendarNotDiplayed");
         errorWrongMonthYear = configLoader.GetProperties("ErrorWrongMonthYear");
 
     }

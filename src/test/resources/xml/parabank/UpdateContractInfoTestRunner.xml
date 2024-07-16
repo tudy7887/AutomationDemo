@@ -1,13 +1,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Login FeTraining Suite">
-    <test name="Login">
+<suite name="Update Profile Info in Para Bank Suite">
+    <test name="Update Profile Info">
         <groups>
             <run>
             </run>
         </groups>
         <classes>
-            <class name="testng.fetraining.LoginTest"/>
-            <class name="cucumber.fetraining.LoginTestRunner"/>
+            <class name="testng.parabank.UpdateContractInfoTest"/>
         </classes>
     </test>
 </suite>

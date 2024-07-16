@@ -1,19 +1,13 @@
 package stepdefs.fetraining;
 
+import basetest.BaseTest;
 import fetraining.actions.CustomerDashBoardActions;
 import fetraining.actions.LoginActions;
 import org.testng.annotations.BeforeSuite;
-import stepdefs.BaseStepDef;
 import io.cucumber.java8.En;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ConfigLoader;
-import webdriver.Chrome;
-import java.time.Duration;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LoginStepdefs extends BaseStepDef implements En {
+public class LoginStepdefs extends BaseTest implements En {
     protected LoginActions loginActions;
     protected CustomerDashBoardActions customerDashBoardActions;
     protected String feTrainingPropertyFilePath = "src/test/resources/properties/FeTraining.properties";
@@ -22,10 +16,7 @@ public class LoginStepdefs extends BaseStepDef implements En {
     public LoginStepdefs() {
         Before(()->{
             Setup();
-            configLoader = new ConfigLoader(feTrainingPropertyFilePath);
-            loginActions = new LoginActions(driver);
-            customerDashBoardActions =  new CustomerDashBoardActions(driver);
-            InitializeProperties();
+            InuitTest("FeTraining Login Scenario");
         });
 
         After(()->{
@@ -33,35 +24,37 @@ public class LoginStepdefs extends BaseStepDef implements En {
         });
 
         Given("^I am on the login page of the FeTraining Application$", () -> {
-            InuitTest("Given: I am on the login page of the FeTraining Application");
             loginActions.GotoPage();
-            AddScreenshot("Login Page", "I'm on Login Page");
+            AddDetails("Given: I am on the login page of the FeTraining Application");
+            AddScreenshot("Login Page", "FeTraining Loginn Page");
         });
 
         Then("^I should be taken to the Customers Dashboard Page$", () -> {
-            InuitTest("I should be taken to the Customers Dashboard Page");
             customerDashBoardActions.WaitUntilLoaded();
+            AddDetails("Then: I should be taken to the Customers Dashboard Page");
             HardAssertEqual(customerDashBoardActions.GetEmail(), userEmail, loginFailed);
         });
         When("^I enter invalid username = <username> and password = <password>$", () -> {
-            InuitTest("When: I enter invalid username = <username> and password = <password>");
             ClearLoginInfo();
             loginActions.SetMail(badUser);
             loginActions.SetPassword(badPassword);
-            AddScreenshot("Invalid Credentials", "I entered invalid credentials");
-            loginActions.ClickLogin();
+            AddDetails(String.format("When: I enter invalid %s = badUser and password = %s", badUser, badPassword));
+            AddScreenshot("Invalid Credentials", "Invalid Credentials");
         });
         Then("^I should receive an <error>$", () -> {
-            InuitTest("Then: I should receive an <error>");
+            AddDetails("Then: I should receive an Error");
             HardAssertEqual(loginActions.GetErrorMessage(), loginError, wrongErrorMessage);
         });
         When("^I enter valid customer username = <username> and password = <password>$", () -> {
-            InuitTest("When: I enter valid customer username = <username> and password = <password>");
             ClearLoginInfo();
             loginActions.SetMail(goodUser);
             loginActions.SetPassword(goodPassword);
-            AddScreenshot("Valid Credentials", "I entered valid credentials");
+            AddDetails(String.format("When: I enter valid %s = badUser and password = %s", goodUser, goodPassword));
+            AddScreenshot("Valid Credentials", "Valid Credentials");
+        });
+        And("^I click on Login Button$", () -> {
             loginActions.ClickLogin();
+            AddDetails("And: I click on Login Button");
         });
     }
 
@@ -69,6 +62,15 @@ public class LoginStepdefs extends BaseStepDef implements En {
     {
         loginActions.ClearMail();
         loginActions.ClearPassword();
+    }
+
+    @BeforeSuite(alwaysRun = true)
+    public void Setup(){
+        super.Setup();
+        configLoader = new ConfigLoader(feTrainingPropertyFilePath);
+        loginActions = new LoginActions(driver);
+        customerDashBoardActions =  new CustomerDashBoardActions(driver);
+        InitializeProperties();
     }
 
     protected String GetReportName() {
