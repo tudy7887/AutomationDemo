@@ -1,9 +1,9 @@
 package testng.fetraining;
 
+import fetraining.facade.FeTrainingFacade;
+import fetraining.facade.IFeTrainingFacade;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import fetraining.actions.CustomerDashBoardActions;
-import fetraining.actions.LoginActions;
 import basetest.BaseTest;
 import util.ConfigLoader;
 
@@ -11,56 +11,55 @@ import util.ConfigLoader;
 // parola: tudor7887
 
 public class LoginTest extends BaseTest {
-    protected LoginActions loginActions;
-    protected CustomerDashBoardActions customerDashBoardActions;
+    protected IFeTrainingFacade iFeTrainingFacade;
     protected String feTrainingPropertyFilePath = "src/test/resources/properties/FeTraining.properties";
-    private String badUser, badPassword, loginError, wrongErrorMessage, userEmail, loginFailed, goodUser, goodPassword;
-    protected String url;
+    private String invalidUser, invalidPassword, loginErrorMessage, wrongErrorMessage, userEmail, loginFailedMessage,
+            customerUser, customerPassword, logoutFailedMessage, loginPageLink;
 
     @BeforeSuite (alwaysRun = true)
     public void Setup(){
         super.Setup();
         configLoader = new ConfigLoader(feTrainingPropertyFilePath);
-        loginActions = new LoginActions(driver);
-        customerDashBoardActions =  new CustomerDashBoardActions(driver);
+        iFeTrainingFacade = new FeTrainingFacade(driver);
         InitializeProperties();
     }
 
-    @Test (groups = "loginfailmessages", priority = 1)
+    @Test (groups = "loginfail", priority = 1)
     public void WrongCredentialsMessage(){
-        loginActions.GotoPage();
         InuitTest("Wrong Credentials Message");
+        iFeTrainingFacade.GotoLoginPage();
         ClearLoginInfo();
-        loginActions.SetMail(badUser);
-        loginActions.SetPassword(badPassword);
-        loginActions.ClickLogin();
-        HardAssertEqual(loginActions.GetErrorMessage(), loginError, wrongErrorMessage);
+        iFeTrainingFacade.SetMail(invalidUser);
+        iFeTrainingFacade.SetPassword(invalidPassword);
+        iFeTrainingFacade.ClickLogin();
+        HardAssertEqual(iFeTrainingFacade.GetErrorMessage(), loginErrorMessage, wrongErrorMessage);
     }
 
     @Test (groups = "authentication", priority = 0)
     public void LoginSuccessful(){
-        loginActions.GotoPage();
         InuitTest("Login Successful");
+        iFeTrainingFacade.GotoLoginPage();
         ClearLoginInfo();
-        loginActions.SetMail(goodUser);
-        loginActions.SetPassword(goodPassword);
-        loginActions.ClickLogin();
-        customerDashBoardActions.WaitUntilLoaded();
-        HardAssertEqual(customerDashBoardActions.GetEmail(), userEmail, loginFailed);
+        iFeTrainingFacade.SetMail(customerUser);
+        iFeTrainingFacade.SetPassword(customerPassword);
+        iFeTrainingFacade.ClickLogin();
+        iFeTrainingFacade.WaitUntilCustomerDashBoardPageLoaded();
+        HardAssertEqual(iFeTrainingFacade.GetEmail(), userEmail, loginFailedMessage);
     }
 
     @Test (groups = "authentication", priority = 1)
     public void Logout()
     {
-        customerDashBoardActions.ClickLogout();
-        loginActions.WaitUntilLoaded();
-        HardAssertEqual(driver.getCurrentUrl(), url, "ERRoR: Logout Failed!");
+        InuitTest("Logout Successful");
+        iFeTrainingFacade.ClickLogout();
+        iFeTrainingFacade.WaitUntilLoginPageLoaded();
+        HardAssertEqual(driver.getCurrentUrl(), loginPageLink, logoutFailedMessage);
     }
 
     protected void ClearLoginInfo()
     {
-        loginActions.ClearMail();
-        loginActions.ClearPassword();
+        iFeTrainingFacade.ClearMail();
+        iFeTrainingFacade.ClearPassword();
     }
 
     @Override protected String GetReportName() {
@@ -68,14 +67,15 @@ public class LoginTest extends BaseTest {
     }
 
     private void InitializeProperties(){
-        url = configLoader.GetProperties("StartPageLink");
-        badUser = configLoader.GetProperties("InvalidUser");
-        badPassword = configLoader.GetProperties("InvalidPassword");
-        loginError = configLoader.GetProperties("LoginError");
+        loginPageLink = configLoader.GetProperties("loginPageLink");
+        invalidUser = configLoader.GetProperties("invalidUser");
+        invalidPassword = configLoader.GetProperties("invalidPassword");
+        loginErrorMessage = configLoader.GetProperties("loginErrorMessage");
         wrongErrorMessage = configLoader.GetProperties("WrongErrorMessage");
         userEmail = configLoader.GetProperties("customerUser");
-        loginFailed = configLoader.GetProperties("LoginFailed");
-        goodUser = configLoader.GetProperties("customerUser");
-        goodPassword = configLoader.GetProperties("CustomerPassword");
+        loginFailedMessage = configLoader.GetProperties("loginFailedMessage");
+        logoutFailedMessage = configLoader.GetProperties("logoutFailedMessage");
+        customerUser = configLoader.GetProperties("customerUser");
+        customerPassword = configLoader.GetProperties("customerPassword");
     }
 }

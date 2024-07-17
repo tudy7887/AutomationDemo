@@ -25,8 +25,8 @@ public class BaseActions {
         wait.until(d -> d.getCurrentUrl().contains(baseElements.GetLink()));
     }
 
-    public void GotoPage()
-    {
+    public void GotoPage() {
         driver.get(baseElements.GetLink());
+        WaitUntilLoaded();
     }
 }

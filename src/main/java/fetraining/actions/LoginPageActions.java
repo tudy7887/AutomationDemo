@@ -1,12 +1,13 @@
 package fetraining.actions;
 
 import fetraining.elements.LoginElements;
+import fetraining.interfaces.ILoginPageActions;
 import org.openqa.selenium.WebDriver;
 
-public class LoginActions extends BaseActions {
+public class LoginPageActions extends BaseActions implements ILoginPageActions {
     private LoginElements elements;
 
-    public LoginActions(WebDriver driver){
+    public LoginPageActions(WebDriver driver){
         super(driver);
         elements = new LoginElements(driver);
         SetBaseElements(elements);

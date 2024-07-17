@@ -52,8 +52,8 @@ public class OpenNewAccountTest extends LoginTest{
         AddScreenshot("New Checking Account Details", "New Account Details");
         SoftAssertEqual(details.Number, newAccountNumber, wrongAccountNumberMessage);
         SoftAssertEqual(details.Type, savings, wrongAccountTypeMessage);
-        SoftAssertEqual(details.Balance, startCash, wrongAccountTypeMessage);
-        SoftAssertEqual(details.Available, startCash, wrongAccountTypeMessage);
+        SoftAssertEqual(details.Balance, startCash, wrongAccountBalanceMessage);
+        SoftAssertEqual(details.Available, startCash, wrongAccountAvailableMessage);
     }
 
     private void InitializeProperties(){

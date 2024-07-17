@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
         InuitTest("Wrong Credentials Message");
         iParaBankFacade.GoToLoginPage();
         iParaBankFacade.ClearLoginData();
-        iParaBankFacade.ClickLoginButton();
+        iParaBankFacade.ClickLoginButtonFail();
         HardAssertEqual(iParaBankFacade.GetLoginErrorMessage(), errorNoLoginData, noLoginDataMessage);
     }
 
@@ -39,7 +39,7 @@ public class LoginTest extends BaseTest {
         iParaBankFacade.GoToLoginPage();
         iParaBankFacade.ClearLoginData();
         iParaBankFacade.EnterLoginData(wrongUser);
-        iParaBankFacade.ClickLoginButton();
+        iParaBankFacade.ClickLoginButtonFail();
         HardAssertEqual(iParaBankFacade.GetLoginErrorMessage(), errorWrongLoginData, wrongLoginDataMessage);
     }
 
@@ -49,6 +49,7 @@ public class LoginTest extends BaseTest {
         iParaBankFacade.GoToLoginPage();
         iParaBankFacade.ClearLoginData();
         iParaBankFacade.EnterLoginData(user1);
+        AddScreenshot("Valid Credentials", "Enter Valid Credentials");
         iParaBankFacade.ClickLoginButton();
         HardAssertEqual(iParaBankFacade.GetAccountsOverview(), accountOverviewTitle, loginFailMessage);
     }

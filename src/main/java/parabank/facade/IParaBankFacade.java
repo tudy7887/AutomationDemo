@@ -8,11 +8,13 @@ public interface IParaBankFacade {
     void GoToLoginPage();
     String GetAccountsOverview();
     String GetLoginPage();
+    String GetCurrentUrl();
 
     // Login Page
     void ClearLoginData();
     void EnterLoginData(LoginDTO user);
     void ClickLoginButton();
+    void ClickLoginButtonFail();
     void ClickRegisterLink();
     String GetLoginErrorMessage();
 

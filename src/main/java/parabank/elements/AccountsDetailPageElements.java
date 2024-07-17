@@ -43,6 +43,22 @@ public class AccountsDetailPageElements extends BaseElements {
         wait.until(d -> d.findElement(accountBalance).isDisplayed());
         wait.until(d -> d.findElement(accountAvailable).isDisplayed());
     }
+    public void WaitForTransactionDatesList(){
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> !d.findElements(accountTransactionDatesList).isEmpty());
+    }
+    public void WaitForTransactionTransactionList(){
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> !d.findElements(accountTransactionTransactionList).isEmpty());
+    }
+    public void WaitForTransactionDebitListList(){
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> !d.findElements(accountTransactionDebitList).isEmpty());
+    }
+    public void WaitForTransactionCreditList(){
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> !d.findElements(accountTransactionCreditList).isEmpty());
+    }
 
     private void InitializeElements(){
         accountNumber = GetElementByCSSSlecetor(configLoader.GetProperties("accountNumber"));

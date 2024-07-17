@@ -65,13 +65,13 @@ public class UpdateContractInfoPageActions extends BaseActions implements IUpdat
         elements.GetPhoneUpdate().clear();
     }
 
-    public String GetFirstName() { return elements.GetFirstNameUpdate().getText(); }
-    public String GetLastName() { return elements.GetLastNameUpdate().getText(); }
-    public String GetAddress() { return elements.GetAddressUpdate().getText(); }
-    public String GetState() { return elements.GetStateUpdate().getText(); }
-    public String GetCity() { return elements.GetCityUpdate().getText(); }
-    public String GetZipCode() { return elements.GetZipCodeUpdate().getText(); }
-    public String GetPhone(){ return elements.GetPhoneUpdate().getText(); }
+    public String GetFirstName() { return elements.GetFirstNameUpdate().getAttribute("value"); }
+    public String GetLastName() { return elements.GetLastNameUpdate().getAttribute("value"); }
+    public String GetAddress() { return elements.GetAddressUpdate().getAttribute("value"); }
+    public String GetState() { return elements.GetStateUpdate().getAttribute("value"); }
+    public String GetCity() { return elements.GetCityUpdate().getAttribute("value"); }
+    public String GetZipCode() { return elements.GetZipCodeUpdate().getAttribute("value"); }
+    public String GetPhone(){ return elements.GetPhoneUpdate().getAttribute("value"); }
 
     public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }
 }

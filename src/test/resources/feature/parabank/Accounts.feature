@@ -17,7 +17,8 @@ Feature: Accounts Operations
     Then I should see a confirmation message of the "<amount>"$ transaction
     And Last transaction on first account is "<amount>" Debit
     And Last transaction on second account is "<amount>" Credit
-    Examples: |amount|
-              |10    |
-              |50    |
-              |100   |
+    Examples:
+      |amount|
+      |10    |
+      |50    |
+      |100   |

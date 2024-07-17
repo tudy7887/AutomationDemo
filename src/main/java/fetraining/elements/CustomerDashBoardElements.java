@@ -5,35 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CustomerDashBoardElements extends  BaseElements {
-    private By logout = By.cssSelector("body > app-root > app-header > header > nav > ul > li:nth-child(6) > a");
-    private By training = By.cssSelector("body > app-root > app-header > header > nav > ul > li:nth-child(4) > a");
-    private By dashboard = By.cssSelector("body > app-root > app-header > header > nav > ul > li:nth-child(3) > a");
-    private By email = By.id("userNameDisplay");
-    private By previous = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[1]/div/button[1]");
-    private By forward = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[1]/div/button[2]");
-    private By today = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[1]/button");
-    private By month = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[3]/div/button[1]");
-    private By week = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[3]/div/button[2]");
-    private By day = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[3]/div/button[3]");
-    private By list = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[1]/div[3]/div/button[4]");
-    private By toglecalendar = By.xpath("/html/body/app-root/app-dashboard/div/div[1]/div[2]/label/input");
-    private By togleweekends = By.xpath("/html/body/app-root/app-dashboard/div/div[1]/div[3]/label/input");
-    private By monthyear = By.id("fc-dom-1");
-    private By calendar = By.xpath("/html/body/app-root/app-dashboard/div/div[2]/full-calendar/div[2]");
-    private By addevent = By.cssSelector("#createEvent > div > div");
-    private By eventttle = By.id("eventTitle");
-    private By createevent = By.id("createEventButton");
-    private By cancelevent = By.cssSelector("#createEvent > div > div > form > button:nth-child(3)");
-    private By monday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
-    private By tuesday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
-    private By wednesday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
-    private By thursday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
-    private By friday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
-    private By saturday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sat");
-    private By sunday = By.cssSelector("th.fc-col-header-cell.fc-day.fc-day-sun");
+    private By logoutButton, trainingButton, dashboardButton, emailButton, monthYearText, addEventPopup, eventTitle,
+            createEventButton, cancelEventButton, monday, tuesday, wednesday, thursday, friday, saturday, sunday,
+            previousButton, forwardButton, todayButton, monthButton, weekButton, dayButton, listButton,
+            toggleCalendarCheckBox, toggleWeekendsCheckBox, calendar;
+
     public CustomerDashBoardElements(WebDriver driver){
         super(driver);
         SetLink("http://apptest.go.ro:9999/dashboard");
+        InitializeElements();
     }
 
     public WebElement CalendarDay(int week, int day)
@@ -43,61 +23,59 @@ public class CustomerDashBoardElements extends  BaseElements {
         return driver.findElement(by);
     }
     public WebElement LogoutButton(){
-        return driver.findElement(logout);
+        return driver.findElement(logoutButton);
     }
     public WebElement TrainingButton(){
-        return driver.findElement(training);
+        return driver.findElement(trainingButton);
     }
     public WebElement EmailButton(){
-        return driver.findElement(email);
+        return driver.findElement(emailButton);
     }
     public WebElement DashBoardButton(){
-        return driver.findElement(dashboard);
+        return driver.findElement(dashboardButton);
     }
     public WebElement PreviousButton(){
-        return driver.findElement(previous);
+        return driver.findElement(previousButton);
     }
     public WebElement ForwardButton(){
-        return driver.findElement(forward);
+        return driver.findElement(forwardButton);
     }
     public WebElement TodayButton(){
-        return driver.findElement(today);
+        return driver.findElement(todayButton);
     }
     public WebElement MonthButton(){
-        return driver.findElement(month);
+        return driver.findElement(monthButton);
     }
     public WebElement DayButton(){
-        return driver.findElement(day);
+        return driver.findElement(dayButton);
     }
     public WebElement WeekButton(){
-        return driver.findElement(week);
+        return driver.findElement(weekButton);
     }
     public WebElement ListButton(){
-        return driver.findElement(list);
+        return driver.findElement(listButton);
     }
     public WebElement MonthYearTextBox(){
-        return driver.findElement(monthyear);
+        return driver.findElement(monthYearText);
     }
-    public WebElement ToggleCalendarCheckBox(){
-        return driver.findElement(toglecalendar);
-    }
+    public WebElement ToggleCalendarCheckBox(){ return driver.findElement(toggleCalendarCheckBox); }
     public WebElement ToggleWeekendsCheckBox(){
-        return driver.findElement(togleweekends);
+        return driver.findElement(toggleWeekendsCheckBox);
     }
     public WebElement CalendarTable(){
         return driver.findElement(calendar);
     }
     public WebElement AddEventPopup(){
-        return driver.findElement(addevent);
+        return driver.findElement(addEventPopup);
     }
     public WebElement CreateEventButton(){
-        return driver.findElement(createevent);
+        return driver.findElement(createEventButton);
     }
     public WebElement CancelEventButton(){
-        return driver.findElement(cancelevent);
+        return driver.findElement(cancelEventButton);
     }
     public WebElement EventTitleInput(){
-        return driver.findElement(eventttle);
+        return driver.findElement(eventTitle);
     }
     public WebElement MondayColumn(){
         return driver.findElement(monday);
@@ -117,8 +95,34 @@ public class CustomerDashBoardElements extends  BaseElements {
     public WebElement SaturdayColumn(){
         return driver.findElement(saturday);
     }
-    public WebElement SundayColumn(){
-        return driver.findElement(sunday);
-    }
+    public WebElement SundayColumn() { return driver.findElement(sunday); }
 
+    private void InitializeElements(){
+        logoutButton = GetElementByCSSSlecetor(configLoader.GetProperties("logoutButton"));
+        trainingButton = GetElementByCSSSlecetor(configLoader.GetProperties("trainingButton"));
+        dashboardButton = GetElementByCSSSlecetor(configLoader.GetProperties("dashboardButton"));
+        emailButton = GetElementByCSSSlecetor(configLoader.GetProperties("emailButton"));
+        monthYearText = GetElementByCSSSlecetor(configLoader.GetProperties("monthYearText"));
+        addEventPopup = GetElementByCSSSlecetor(configLoader.GetProperties("addEventPopup"));
+        eventTitle = GetElementByCSSSlecetor(configLoader.GetProperties("eventTitle"));
+        createEventButton = GetElementByCSSSlecetor(configLoader.GetProperties("createEventButton"));
+        cancelEventButton = GetElementByCSSSlecetor(configLoader.GetProperties("cancelEventButton"));
+        monday = GetElementByCSSSlecetor(configLoader.GetProperties("monday"));
+        tuesday = GetElementByCSSSlecetor(configLoader.GetProperties("tuesday"));
+        wednesday = GetElementByCSSSlecetor(configLoader.GetProperties("wednesday"));
+        thursday = GetElementByCSSSlecetor(configLoader.GetProperties("thursday"));
+        friday = GetElementByCSSSlecetor(configLoader.GetProperties("friday"));
+        saturday = GetElementByCSSSlecetor(configLoader.GetProperties("saturday"));
+        sunday = GetElementByCSSSlecetor(configLoader.GetProperties("sunday"));
+        previousButton = GetElementByCSSSlecetor(configLoader.GetProperties("previousButton"));
+        forwardButton = GetElementByCSSSlecetor(configLoader.GetProperties("forwardButton"));
+        todayButton = GetElementByCSSSlecetor(configLoader.GetProperties("todayButton"));
+        monthButton = GetElementByCSSSlecetor(configLoader.GetProperties("monthButton"));
+        weekButton = GetElementByCSSSlecetor(configLoader.GetProperties("weekButton"));
+        dayButton = GetElementByCSSSlecetor(configLoader.GetProperties("dayButton"));
+        listButton = GetElementByCSSSlecetor(configLoader.GetProperties("listButton"));
+        toggleCalendarCheckBox = GetElementByCSSSlecetor(configLoader.GetProperties("toggleCalendarCheckBox"));
+        toggleWeekendsCheckBox = GetElementByCSSSlecetor(configLoader.GetProperties("toggleWeekendsCheckBox"));
+        calendar = GetElementByCSSSlecetor(configLoader.GetProperties("calendar"));
+    }
 }

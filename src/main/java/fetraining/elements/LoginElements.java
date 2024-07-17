@@ -9,28 +9,33 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginElements extends BaseElements {
-    private By email = By.id("userEmail");
-    private By password = By.id("userPassword");
-    private By login = By.id("submitButton");
-    private By error = By.id("errorForbiddenAccess");
+    private By loginEmail, loginPassword, loginButton, loginError;
 
     public LoginElements(WebDriver driver){
         super(driver);
         SetLink("http://apptest.go.ro:9999/login");
+        InitializeElements();
     }
 
     public WebElement MailInput(){
-        return driver.findElement(email);
+        return driver.findElement(loginEmail);
     }
     public WebElement PasswordInput(){
-        return driver.findElement(password);
+        return driver.findElement(loginPassword);
     }
     public WebElement LoginButton(){
-        return driver.findElement(login);
+        return driver.findElement(loginButton);
     }
     public WebElement ErrorMesage(){
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> d.findElement(error).isEnabled());
-        return driver.findElement(error);
+        wait.until(d -> d.findElement(loginError).isEnabled());
+        return driver.findElement(loginError);
+    }
+
+    private void InitializeElements(){
+        loginEmail = GetElementByCSSSlecetor(configLoader.GetProperties("loginEmail"));
+        loginPassword = GetElementByCSSSlecetor(configLoader.GetProperties("loginPassword"));
+        loginButton = GetElementByCSSSlecetor(configLoader.GetProperties("loginButton"));
+        loginError = GetElementByCSSSlecetor(configLoader.GetProperties("loginError"));
     }
 }
