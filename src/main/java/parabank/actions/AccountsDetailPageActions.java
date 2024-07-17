@@ -37,15 +37,19 @@ public class AccountsDetailPageActions extends BaseActions implements IAccountsD
     }
 
     public List<String> GetTransactionDatesList(){
+        elements.WaitForTransactionDatesList();
         return GetWebElementList(elements.GetAccountTransactionDatesList());
     }
     public List<String> GetTransactionTransactionList(){
+        elements.WaitForTransactionTransactionList();
         return GetWebElementList(elements.GetAccountTransactionTransactionList());
     }
     public List<String> GetTransactionDebitList(){
+        elements.WaitForTransactionDebitListList();
         return GetWebElementList(elements.GetAccountTransactionDebitList());
     }
     public List<String> GetTransactionCreditList(){
+        elements.WaitForTransactionCreditList();
         return GetWebElementList(elements.GetAccountTransactionCreditList());
     }
     public void WaitUntilDataIsLoaded() { elements.WaitUntilDataIsLoaded(); }

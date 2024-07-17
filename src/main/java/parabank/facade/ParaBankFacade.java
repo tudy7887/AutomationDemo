@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParaBankFacade implements IParaBankFacade {
+    private WebDriver driver;
     protected IAccountsDetailPageActions iAccountsDetailPageActions;
     protected ITransactionDetailsPageActions iTransactionDetailsPageActions;
     protected IAccountsOverviewPageActions iAccountsOverviewPageActions;
@@ -24,6 +25,7 @@ public class ParaBankFacade implements IParaBankFacade {
     protected IUserMenuActions iUserMenuActions;
 
     public ParaBankFacade(WebDriver driver){
+        this.driver = driver;
         iAccountsDetailPageActions = new AccountsDetailPageActions(driver);
         iTransactionDetailsPageActions = new TransactionDetailsPageActions(driver);
         iAccountsOverviewPageActions = new AccountsOverviewPageActions(driver);
@@ -39,6 +41,9 @@ public class ParaBankFacade implements IParaBankFacade {
         iUserMenuActions = new UserMenuActions(driver);
     }
 
+    public String GetCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
     public void GoToLoginPage() {
         iLoginPageActions.GotoPage();
     }
@@ -63,6 +68,9 @@ public class ParaBankFacade implements IParaBankFacade {
     public void ClickLoginButton(){
         iLoginPageActions.ClickLoginButton();
         iAccountsOverviewPageActions.WaitUntilLoaded();
+    }
+    public void ClickLoginButtonFail(){
+        iLoginPageActions.ClickLoginButton();
     }
     public void ClickRegisterLink(){
         iLoginPageActions.ClickRegisterLink();
@@ -120,7 +128,7 @@ public class ParaBankFacade implements IParaBankFacade {
     }
     public void ClickTransferFundsMenu(){
         iUserMenuActions.ClickTransferFundsMenu();
-        iTransactionDetailsPageActions.WaitUntilDataIsLoaded();
+        iTransferFundsPageActions.WaitUntilDataIsLoaded();
     }
     public void ClickBillPayMenu(){
         iUserMenuActions.ClickBillPayMenu();

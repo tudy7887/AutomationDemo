@@ -2,8 +2,6 @@ package stepdefs.parabank;
 
 import basetest.BaseTest;
 
-import fetraining.actions.CustomerDashBoardActions;
-import fetraining.actions.LoginActions;
 import org.testng.annotations.BeforeSuite;
 import io.cucumber.java8.En;
 import parabank.dto.LoginDTO;
@@ -72,7 +70,7 @@ public class AccountOperationsStepdefs extends BaseTest implements En {
         });
         And("^Last account should be the newly created one$", () -> {
             AddDetails("And: Last account should be the newly created one");
-            HardAssertEqual(iParaBankFacade.GetAccounts().get(nrOfAccounts), to, wrongAccountMessage);
+            HardAssertEqual(iParaBankFacade.GetAccounts().get(nrOfAccounts).Number, to, wrongAccountMessage);
         });
         Given("^I'm a Para Bank user with at least 2 accounts; I wanna transfer between first 2 accounts$", () -> {
             AddDetails("Given: I'm a Para Bank user with at least 2 accounts; I wanna transfer between first 2 accounts");
@@ -117,7 +115,7 @@ public class AccountOperationsStepdefs extends BaseTest implements En {
             iParaBankFacade.ClickAccountOverviewMenu();
             iParaBankFacade.ClickAccountInAccountOverview(1);
             var details = iParaBankFacade.GetAccountsDetails();
-            SoftAssertEqual(details.Number, from, wrongAccountMessage);
+            SoftAssertEqual(details.Number, to, wrongAccountMessage);
             var transaction =  details.Transactions.get(details.Transactions.size() - 1);
             SoftAssertEqual(transaction.Credit, GetAmountInDollars(amount),wrongTransactionCreditMessage);
             SoftAssertEqual(transaction.Debit, "",wrongTransactionDebitMessage);

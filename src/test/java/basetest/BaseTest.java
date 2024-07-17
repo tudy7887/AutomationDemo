@@ -70,14 +70,14 @@ public class BaseTest {
         AddScreenshot(name, description);
         Assert.assertEquals(actualResult, expectedResult, errorMessage);
     }
-    protected void HardAssertTrue(boolean condition, String errorMessage){
-        var name = "EXPECTED TRUE";
-        AddScreenshot(name, name);
+    protected void HardAssertTrue(boolean condition, String errorMessage, String description){
+        var name = String.format("EXPECTED TRUE %s", description);
+        AddScreenshot(name, description);
         Assert.assertTrue(condition, errorMessage);
     }
-    protected void HardAssertFalse(boolean condition, String errorMessage){
-        var name = "EXPECTED FALSE";
-        AddScreenshot(name, name);
+    protected void HardAssertFalse(boolean condition, String errorMessage, String description){
+        var name = String.format("EXPECTED FALSE %s", description);
+        AddScreenshot(name, description);
         Assert.assertFalse(condition, errorMessage);
     }
     protected void SoftAssertEqual(Object actualResult, Object expectedResult, String errorMessage){
@@ -88,17 +88,17 @@ public class BaseTest {
         softAssert.assertEquals(actualResult, expectedResult, errorMessage);
         softAssert.assertAll();
     }
-    protected void SoftAssertTrue(boolean condition, String errorMessage){
+    protected void SoftAssertTrue(boolean condition, String errorMessage, String description){
         var softAssert =  new SoftAssert();
-        var name = "EXPECTED TRUE";
-        AddScreenshot(name, name);
+        var name = String.format("EXPECTED TRUE %s", description);
+        AddScreenshot(name, description);
         softAssert.assertTrue(condition, errorMessage);
         softAssert.assertAll();
     }
-    protected void SoftAssertFalse(boolean condition, String errorMessage){
+    protected void SoftAssertFalse(boolean condition, String errorMessage, String description){
         var softAssert =  new SoftAssert();
-        var name = "EXPECTED FALSE";
-        AddScreenshot(name, name);
+        var name = String.format("EXPECTED FALSE %s", description);
+        AddScreenshot(name, description);
         softAssert.assertFalse(condition, errorMessage);
         softAssert.assertAll();
     }
@@ -106,6 +106,7 @@ public class BaseTest {
     protected void AddScreenshot(String name, String description){
         var screenShotFile = SaveScreenShot(name);
         extentTest.addScreenCaptureFromPath(screenShotFile.getPath(), description);
+        AddDetails(description);
     }
 
     protected void AddDetails(String details){

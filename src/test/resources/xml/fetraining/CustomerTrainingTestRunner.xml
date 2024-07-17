@@ -7,7 +7,7 @@
             </run>
         </groups>
         <classes>
-            <class name="testng.fetraining.CustomerDashBoardTest"/>
+            <class name="testng.fetraining.CustomerTrainingTest"/>
         </classes>
     </test>
 </suite>

@@ -8,7 +8,6 @@
         </groups>
         <classes>
             <class name="testng.parabank.OpenNewAccountTest"/>
-            <class name="cucumber.parabank.AccountOperationsTestRunner"/>
         </classes>
     </test>
 </suite>

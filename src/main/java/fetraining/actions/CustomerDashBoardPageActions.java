@@ -1,12 +1,13 @@
 package fetraining.actions;
 
+import fetraining.interfaces.ICustomerDashBoardPageActions;
 import org.openqa.selenium.WebDriver;
 import fetraining.elements.CustomerDashBoardElements;
 
-public class CustomerDashBoardActions extends BaseActions {
+public class CustomerDashBoardPageActions extends BaseActions implements ICustomerDashBoardPageActions {
     private CustomerDashBoardElements elements;
 
-    public CustomerDashBoardActions(WebDriver driver){
+    public CustomerDashBoardPageActions(WebDriver driver){
         super(driver);
         elements = new CustomerDashBoardElements(driver);
         SetBaseElements(elements);
