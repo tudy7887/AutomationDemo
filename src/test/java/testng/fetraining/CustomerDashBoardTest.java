@@ -10,7 +10,8 @@ public class CustomerDashBoardTest extends LoginTest {
     private String errorWrongMonthYearMessage, errorCalendarNotDisplayedMessage, errorCalendarDisplayedMessage,
             errorMondayNotDisplayedMessage, errorTuesdayNotDisplayedMessage, errorWednesdayNotDisplayedMessage,
             errorThursdayNotDisplayedMessage, errorFridayNotDisplayedMessage, errorSaturdayNotDisplayedMessage,
-            errorSundayNotDisplayedMessage, errorSaturdayDisplayedMessage, errorSundayDisplayedMessage;
+            errorSundayNotDisplayedMessage, errorSaturdayDisplayedMessage, errorSundayDisplayedMessage,
+            dashBoardPageLink, errorWrongPageMessage;
     private Integer thisMonth, thisYear;
 
     @BeforeSuite (alwaysRun = true)
@@ -19,7 +20,14 @@ public class CustomerDashBoardTest extends LoginTest {
         InitializeProperties();
     }
 
-    @Test (dependsOnMethods = "LoginSuccessful", groups = "calendarnavigation")
+    @Test (dependsOnMethods = "LoginSuccessful", groups = "trainingmenu")
+    public void GoToDashBoardMenu(){
+        InuitTest("Go To Dash Board Menu");
+        iFeTrainingFacade.ClickDashBoard();
+        HardAssertEqual(iFeTrainingFacade.GetCurrentUrl(), dashBoardPageLink, errorWrongPageMessage);
+    }
+
+    @Test (dependsOnMethods = "GoToDashBoardMenu", groups = "calendarnavigation")
     public void Previous12Month() {
         InuitTest("Previous 12 Month");
         SetToday();
@@ -34,7 +42,7 @@ public class CustomerDashBoardTest extends LoginTest {
         }
     }
 
-    @Test (dependsOnMethods = "LoginSuccessful", groups = "calendarnavigation")
+    @Test (dependsOnMethods = "GoToDashBoardMenu", groups = "calendarnavigation")
     public void Next12Month() {
         InuitTest("Next 12 Month");
         SetToday();
@@ -49,7 +57,7 @@ public class CustomerDashBoardTest extends LoginTest {
         }
     }
 
-    @Test (dependsOnMethods = "LoginSuccessful", groups = "checkboxes")
+    @Test (dependsOnMethods = "GoToDashBoardMenu", groups = "checkboxes")
     public void ToggleCalendarCheckBox(){
         InuitTest("Toggle Calendar");
         HardAssertTrue(iFeTrainingFacade.IsCalendarDisplayed(), errorCalendarNotDisplayedMessage, "Calendar is displayed");
@@ -59,7 +67,7 @@ public class CustomerDashBoardTest extends LoginTest {
         HardAssertTrue(iFeTrainingFacade.IsCalendarDisplayed(), errorCalendarNotDisplayedMessage, "Calendar is displayed");
     }
 
-    @Test (dependsOnMethods = "LoginSuccessful", groups = "checkboxes")
+    @Test (dependsOnMethods = "GoToDashBoardMenu", groups = "checkboxes")
     public void ToggleWeekendsCheckBox(){
         InuitTest("Toggle Weekends");
         AssertWithWeekend();
@@ -140,6 +148,8 @@ public class CustomerDashBoardTest extends LoginTest {
         errorSundayNotDisplayedMessage = configLoader.GetProperties("errorSundayNotDisplayedMessage");
         errorSaturdayDisplayedMessage = configLoader.GetProperties("errorSaturdayDisplayedMessage");
         errorSundayDisplayedMessage = configLoader.GetProperties("errorSundayDisplayedMessage");
+        errorWrongPageMessage = configLoader.GetProperties("errorWrongPageMessage");
+        dashBoardPageLink = configLoader.GetProperties("dashBoardPageLink");
 
         months = new HashMap<Integer, String>();
         months.put(1, "January");

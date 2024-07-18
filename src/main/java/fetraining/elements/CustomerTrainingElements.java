@@ -3,11 +3,15 @@ package fetraining.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CustomerTrainingElements extends BaseElements{
 
     private By trainingElement, trainingList, mondayList, tuesdayList, wednesdayList,
-            thursdayList, fridayList, saturdayList, sundayList;
+            thursdayList, fridayList, saturdayList, sundayList, generateAllButton;
     public CustomerTrainingElements(WebDriver driver) {
         super(driver);
         SetLink("http://apptest.go.ro:9999/trainings");
@@ -23,6 +27,7 @@ public class CustomerTrainingElements extends BaseElements{
     public WebElement GetFridayList() { return driver.findElement(fridayList); }
     public WebElement GetSaturdayList() { return driver.findElement(saturdayList); }
     public WebElement GetSundayList() { return driver.findElement(sundayList); }
+    public WebElement GetGenerateAllButton() { return driver.findElement(generateAllButton); }
 
     private void InitializeElements(){
         trainingElement = GetElementByCSSSlecetor(configLoader.GetProperties("trainingElement"));
@@ -34,6 +39,7 @@ public class CustomerTrainingElements extends BaseElements{
         fridayList = GetElementByCSSSlecetor(configLoader.GetProperties("fridayList"));
         saturdayList = GetElementByCSSSlecetor(configLoader.GetProperties("saturdayList"));
         sundayList = GetElementByCSSSlecetor(configLoader.GetProperties("sundayList"));
+        generateAllButton = GetElementByCSSSlecetor(configLoader.GetProperties("generateAllButton"));
 
     }
 }
