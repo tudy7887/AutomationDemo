@@ -315,6 +315,10 @@ public class CustomerTrainingTest extends LoginTest {
         position4Element = iFeTrainingFacade.GetTrainingListElementText(3);
     }
 
+    @Override protected String GetReportName() {
+        return "FeTrainingCustomerTraining.html";
+    }
+
     private void InitializeProperties(){
         trainingPageLink = configLoader.GetProperties("trainingPageLink");
         errorWrongPageMessage = configLoader.GetProperties("errorWrongPageMessage");

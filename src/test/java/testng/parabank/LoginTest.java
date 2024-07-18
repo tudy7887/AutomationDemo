@@ -61,7 +61,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Override protected String GetReportName() {
-        return "ParaBank.html";
+        return "ParaBankLogin.html";
     }
 
     private void InitializeProperties(){

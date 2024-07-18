@@ -63,7 +63,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Override protected String GetReportName() {
-        return "FeTraining.html";
+        return "FeTrainingLogin.html";
     }
 
     private void InitializeProperties(){

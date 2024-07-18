@@ -56,6 +56,10 @@ public class OpenNewAccountTest extends LoginTest{
         SoftAssertEqual(details.Available, startCash, wrongAccountAvailableMessage);
     }
 
+    @Override protected String GetReportName() {
+        return "ParaBankOpenNewAccount.html";
+    }
+
     private void InitializeProperties(){
         checking = configLoader.GetProperties("checking");
         savings = configLoader.GetProperties("savings");

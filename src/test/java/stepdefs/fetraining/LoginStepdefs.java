@@ -85,7 +85,7 @@ public class LoginStepdefs extends BaseTest implements En {
     }
 
     protected String GetReportName() {
-        return "FeeTrainingCucumber.html";
+        return "FeeTrainingLoginCucumber.html";
     }
 
     private void InitializeProperties(){
