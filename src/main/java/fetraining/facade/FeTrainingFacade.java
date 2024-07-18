@@ -119,6 +119,77 @@ public class FeTrainingFacade implements IFeTrainingFacade{
     public void ClearPassword(){
         iLoginPageActions.ClearPassword();
     }
+    public void MoveTrainingListToMonday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToMonday(indexElement);
+    }
+    public void MoveTrainingListToTuesday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToTuesday(indexElement);
+    }
+    public void MoveTrainingListToWednesday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToWednesday(indexElement);
+    }
+    public void MoveTrainingListToThursday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToThursday(indexElement);
+    }
+    public void MoveTrainingListToFriday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToFriday(indexElement);
+    }
+    public void MoveTrainingListToSaturday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToSaturday(indexElement);
+    }
+    public void MoveTrainingListToSunday(int indexElement){
+        iCustomerTrainingPageActions.MoveTrainingListToSunday(indexElement);
+    }
+    public void MoveMondayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveMondayToTrainingList(indexElement);
+    }
+    public void MoveTuesdayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveTuesdayToTrainingList(indexElement);
+    }
+    public void MoveWednesdayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveWednesdayToTrainingList(indexElement);
+    }
+    public void MoveThursdayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveThursdayToTrainingList(indexElement);
+    }
+    public void MoveFridayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveFridayToTrainingList(indexElement);
+    }
+    public void MoveSaturdayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveSaturdayToTrainingList(indexElement);
+    }
+    public void MoveSundayToTrainingList(int indexElement){
+        iCustomerTrainingPageActions.MoveSundayToTrainingList(indexElement);
+    }
+    public String GetTrainingListElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetTrainingListElementText(indexElement);
+    }
+    public String GetMondayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetMondayElementText(indexElement);
+    }
+    public String GetTuesdayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetTuesdayElementText(indexElement);
+    }
+    public String GetWednesdayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetWednesdayElementText(indexElement);
+    }
+    public String GetThursdayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetThursdayElementText(indexElement);
+    }
+    public String GetFridayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetFridayElementText(indexElement);
+    }
+    public String GetSaturdayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetSaturdayElementText(indexElement);
+    }
+    public String GetSundayElementText(int indexElement){
+        return iCustomerTrainingPageActions.GetSundayElementText(indexElement);
+    }
+    public void ClickGenerateAllButton(){
+        iCustomerTrainingPageActions.ClickGenerateAllButton();
+    }
+
+    // Go To Page And Wait Until Loaded
     public void GotoLoginPage(){
         iLoginPageActions.GotoPage();
     }
@@ -133,5 +204,11 @@ public class FeTrainingFacade implements IFeTrainingFacade{
     }
     public String GetCurrentUrl(){
         return driver.getCurrentUrl();
+    }
+    public void GotoCustomerTrainingPage(){
+        iCustomerTrainingPageActions.GotoPage();
+    }
+    public void WaitUntilCustomerTrainingPageLoaded(){
+        iCustomerTrainingPageActions.WaitUntilLoaded();
     }
 }
