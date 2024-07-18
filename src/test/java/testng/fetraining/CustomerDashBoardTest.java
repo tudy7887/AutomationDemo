@@ -134,6 +134,10 @@ public class CustomerDashBoardTest extends LoginTest {
         SoftAssertFalse(iFeTrainingFacade.IsSundayDisplayed(), errorSundayDisplayedMessage, "Sunday is not displayed");
     }
 
+    @Override protected String GetReportName() {
+        return "FeTrainingCustomerDashBoard.html";
+    }
+
     private void InitializeProperties(){
         SetToday();
         errorWrongMonthYearMessage = configLoader.GetProperties("errorWrongMonthYearMessage");

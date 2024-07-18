@@ -38,6 +38,10 @@ public class UpdateContractInfoTest extends LoginTest{
         SoftAssertEqual(updatedInfo.Phone, updateData.Phone, wrongPhoneMessage);
     }
 
+    @Override protected String GetReportName() {
+        return "ParaBankUpdateContractInfo.html";
+    }
+
     private void InitializeProperties(){
         updateData = new UpdateInfoDTO();
         updateData.FirstName = configLoader.GetProperties("updateFirstName");
