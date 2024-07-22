@@ -2,6 +2,7 @@ package testng.fetraining;
 
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class CustomerTrainingTest extends LoginTest {
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toMonday(){
         InuitTest("Move All To Monday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -42,10 +44,12 @@ public class CustomerTrainingTest extends LoginTest {
         SoftAssertEqual(GetTrainingListFirstElements(4),
                 GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toTuesday(){
         InuitTest("Move All To Tuesday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -61,10 +65,12 @@ public class CustomerTrainingTest extends LoginTest {
         SoftAssertEqual(GetTrainingListFirstElements(4),
                 GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toWednesday(){
         InuitTest("Move All To Wednesday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -80,10 +86,12 @@ public class CustomerTrainingTest extends LoginTest {
         SoftAssertEqual(GetTrainingListFirstElements(4),
                 GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toThursday(){
         InuitTest("Move All To Thursday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -99,10 +107,12 @@ public class CustomerTrainingTest extends LoginTest {
         SoftAssertEqual(GetTrainingListFirstElements(4),
                 GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toFriday(){
         InuitTest("Move All To Friday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -118,10 +128,12 @@ public class CustomerTrainingTest extends LoginTest {
         SoftAssertEqual(GetTrainingListFirstElements(4),
                 GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toSaturday(){
         InuitTest("Move All To Saturday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -130,17 +142,19 @@ public class CustomerTrainingTest extends LoginTest {
         // Move all 4
         MoveTrainingListToSaturday(4);
         SoftAssertEqual(GetSaturdayFirstElements(4),
-                GetReferenceString(position1Element, position4Element, position3Element, position2Element),
+                GetReferenceString(position2Element, position4Element, position3Element, position1Element),
                 errorElementsAreInWrongOrderMessage);
         // Restore to Initial
         MoveSaturdayToTrainingList(4);
         SoftAssertEqual(GetTrainingListFirstElements(4),
-                GetReferenceString(position4Element, position2Element, position3Element, position1Element),
+                GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
     @Test (dependsOnMethods = "GoToTrainingMenu", groups = "trainingprogram")
     public void MoveAll4toSunday(){
         InuitTest("Move All To Sunday");
+        softAssert = new SoftAssert();
         // Initial
         IdentifyInitialOrderOfElements();
         HardAssertEqual(GetTrainingListFirstElements(4),
@@ -149,13 +163,14 @@ public class CustomerTrainingTest extends LoginTest {
         // Move all 4
         MoveTrainingListToSunday(4);
         SoftAssertEqual(GetSundayFirstElements(4),
-                GetReferenceString(position1Element, position4Element, position3Element, position2Element),
+                GetReferenceString(position2Element, position4Element, position3Element, position1Element),
                 errorElementsAreInWrongOrderMessage);
         // Restore to Initial
         MoveSundayToTrainingList(4);
         SoftAssertEqual(GetTrainingListFirstElements(4),
-                GetReferenceString(position4Element, position2Element, position3Element, position1Element),
+                GetReferenceString(position4Element, position1Element, position3Element, position2Element),
                 errorElementsAreInWrongOrderMessage);
+        softAssert.assertAll();
     }
 
 

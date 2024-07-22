@@ -23,6 +23,7 @@ public class BaseTest {
     private ExtentTest extentTest;
     private ScreenShotManager screenShotManager;
     protected ConfigLoader configLoader;
+    protected SoftAssert softAssert;
 
     private String baseTestPropertyFilePath = "src/test/resources/properties/BaseTest.properties";
     private String pased, failed, skipped;
@@ -81,26 +82,20 @@ public class BaseTest {
         Assert.assertFalse(condition, errorMessage);
     }
     protected void SoftAssertEqual(Object actualResult, Object expectedResult, String errorMessage){
-        var softAssert =  new SoftAssert();
         var name = "ACTUAL vs EXPECT";
         var description = String.format("ACTUAL: %s <br> EXPECT: %s", actualResult, expectedResult);
         AddScreenshot(name, description);
         softAssert.assertEquals(actualResult, expectedResult, errorMessage);
-        softAssert.assertAll();
     }
     protected void SoftAssertTrue(boolean condition, String errorMessage, String description){
-        var softAssert =  new SoftAssert();
         var name = String.format("EXPECT TRUE %s", description);
         AddScreenshot(name, description);
         softAssert.assertTrue(condition, errorMessage);
-        softAssert.assertAll();
     }
     protected void SoftAssertFalse(boolean condition, String errorMessage, String description){
-        var softAssert =  new SoftAssert();
         var name = String.format("EXPECT FALSE %s", description);
         AddScreenshot(name, description);
         softAssert.assertFalse(condition, errorMessage);
-        softAssert.assertAll();
     }
 
     protected void AddScreenshot(String name, String description){

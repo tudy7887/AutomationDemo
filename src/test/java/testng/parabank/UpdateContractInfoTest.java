@@ -2,6 +2,7 @@ package testng.parabank;
 
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import parabank.dto.UpdateInfoDTO;
 
 public class UpdateContractInfoTest extends LoginTest{
@@ -18,6 +19,7 @@ public class UpdateContractInfoTest extends LoginTest{
     @Test(dependsOnMethods = "LoginSuccessful", groups = "updatecontactinfo")
     public void UpdateUserInfo() {
         InuitTest("Update User Info");
+        softAssert = new SoftAssert();
         iParaBankFacade.ClickUpdateContractInfoMenu();
         var initialInfo = iParaBankFacade.GetUserInfo();
         AddScreenshot("Initial User Info", "Initial User Info");
@@ -36,6 +38,7 @@ public class UpdateContractInfoTest extends LoginTest{
         SoftAssertEqual(updatedInfo.City, updateData.City, wrongCityMessage);
         SoftAssertEqual(updatedInfo.ZipCode, updateData.ZipCode, wrongZipCodeMessage);
         SoftAssertEqual(updatedInfo.Phone, updateData.Phone, wrongPhoneMessage);
+        softAssert.assertAll();
     }
 
     @Override protected String GetReportName() {
