@@ -1,6 +1,7 @@
 package testng.fetraining;
 
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,12 +70,14 @@ public class CustomerDashBoardTest extends LoginTest {
 
     @Test (dependsOnMethods = "GoToDashBoardMenu", groups = "checkboxes")
     public void ToggleWeekendsCheckBox(){
+        softAssert = new SoftAssert();
         InuitTest("Toggle Weekends");
         AssertWithWeekend();
         iFeTrainingFacade.ClickToggleWeekends();
         AssertWithoutWeekend();
         iFeTrainingFacade.ClickToggleWeekends();
         AssertWithWeekend();
+        softAssert.assertAll();
     }
 
     private String GetMonthYear(){

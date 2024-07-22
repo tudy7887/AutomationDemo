@@ -2,6 +2,7 @@ package testng.parabank;
 
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class OpenNewAccountTest extends LoginTest{
     private String checking, savings, startCash;
@@ -16,6 +17,7 @@ public class OpenNewAccountTest extends LoginTest{
 
     @Test(dependsOnMethods = "LoginSuccessful", groups = "newaccount")
     public void OenNewCheckingAccount() {
+        softAssert = new SoftAssert();
         InuitTest("Oen New Checking Account");
         iParaBankFacade.ClickAccountOverviewMenu();
         var mainAccountNumber = iParaBankFacade.GetAccounts().get(0).Number;
@@ -33,11 +35,13 @@ public class OpenNewAccountTest extends LoginTest{
         SoftAssertEqual(details.Type, checking, wrongAccountTypeMessage);
         SoftAssertEqual(details.Balance, startCash, wrongAccountBalanceMessage);
         SoftAssertEqual(details.Available, startCash, wrongAccountAvailableMessage);
+        softAssert.assertAll();
     }
 
     @Test(dependsOnMethods = "LoginSuccessful", groups = "newaccount")
     public void OenNewSavingAccount() {
         InuitTest("Oen New Saving Account");
+        softAssert = new SoftAssert();
         iParaBankFacade.ClickAccountOverviewMenu();
         var mainAccountNumber = iParaBankFacade.GetAccounts().get(0).Number;
         AddScreenshot("Accounts Overview", "Existing Accounts Number");
@@ -54,6 +58,7 @@ public class OpenNewAccountTest extends LoginTest{
         SoftAssertEqual(details.Type, savings, wrongAccountTypeMessage);
         SoftAssertEqual(details.Balance, startCash, wrongAccountBalanceMessage);
         SoftAssertEqual(details.Available, startCash, wrongAccountAvailableMessage);
+        softAssert.assertAll();
     }
 
     @Override protected String GetReportName() {

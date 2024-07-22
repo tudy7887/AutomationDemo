@@ -4,6 +4,7 @@ import basetest.BaseTest;
 
 import org.testng.annotations.BeforeSuite;
 import io.cucumber.java8.En;
+import org.testng.asserts.SoftAssert;
 import parabank.dto.LoginDTO;
 import parabank.facade.IParaBankFacade;
 import parabank.facade.ParaBankFacade;
@@ -30,9 +31,11 @@ public class AccountOperationsStepdefs extends BaseTest implements En {
         Before(()->{
             Setup();
             InuitTest("Account Operation Scenario");
+            softAssert = new SoftAssert();
         });
 
         After(()->{
+            softAssert.assertAll();
             Logout();
             Teardown();
         });
