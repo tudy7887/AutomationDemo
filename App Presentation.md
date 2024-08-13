@@ -1,6 +1,8 @@
-**Automatio nDemo**
+**Automation Demo**
 
-- Create and run automations on 2 Apps
+- App Diagram
+- ![Java Automation Demo Diagram](https://github.com/user-attachments/assets/bf84c051-495e-452c-a285-1844584828f8)
+- Run tests on 2 Apps
 - ![image](https://github.com/user-attachments/assets/96e70a1a-81a1-4b91-9248-754c74b67f4c)
 - Use Page Object Model Pattern
   - Each Web Page is defined separately
